@@ -8,23 +8,23 @@
 >
 > ![image-20230206104907461](Source Insight 4 用户指南.assets/image-20230206104907461.png)
 
-Source Insight - 版本 4
-1987-2018年版权，由Source Dynamics 股份有限公司出版。
+**Source Insight** - 版本 4
+1987-2018 ©，由Source Dynamics 股份有限公司出版。
 
 本文档及其中描述的软件受版权保护，保留所有权利。根据版权法，未经Source Dynamics 股份有限公司事先书面许可，不得将文档或软件全部或部分复制，影印，重置，翻译或简化为任何电子媒介或机器可读形式。
 
-免责声明和责任限制
+**免责声明和责任限制**
 
 本手册及其中描述的软件由Source Dynamics 股份有限公司制作，如有更改，恕不另行通知。Source Dynamics 股份有限公司对由此处包含的任何不准确或遗漏或由使用此处包含的信息或程序产生的后果不承担任何责任。
 
 Source Dynamics 股份有限公司对这些程序或本手册中的补充文档不做任何明示或暗示的保证。在任何情况下，Source Dynamics 股份有限公司均不对提供，执行或使用程序或文档相关的或由此引起的偶然或间接损害承担责任。本免责声明包括但不限于因使用或操作随附软件而导致的任何服务中断，业务损失或预期利润或间接损失。
 
-Source Insight 是Source Dynamics 股份有限公司的商标。
+**Source Insight** 是Source Dynamics 股份有限公司的商标。
 其他产品名称是其各自制造商的商标。
 
  
 
-Source Insight 股份有限公司
+**Source Insight 股份有限公司**
 22525 SE 64th, Suite 260
 Issaquah, WA 98027
 USA
@@ -69,7 +69,7 @@ Source Insight 的重要优势是：
 
 Source Insight 需要通过 Internet 进行初始激活。 激活过程是版本 4 的新功能，我们将其设计为对用户的影响非常小。 请理解，激活可保护您的许可证，验证您的序列号，并允许我们继续开发 Source Insight。
 
-首次启动 Source Insight 时，将出现“管理许可证”窗口。 请参阅：管理许可证。系统将提示您输入序列号或开始新的试用许可证。 试用许可证运行 30 天。 您不需要序列号即可使用试用许可证。
+首次启动 Source Insight 时，将出现**管理许可证(Manage Licence)**窗口。 请参阅：[管理许可证](#Manage  License)。系统将提示您输入序列号或开始新的试用许可证。 试用许可证运行 30 天。 您不需要序列号即可使用试用许可证。
 
 出现提示时，请输入您的姓名和电子邮件地址。 您的电子邮件地址是可选的，但我们强烈建议您提供，这样您就可以在丢失许可证时找回您的许可证。 这也使我们能够在有任何重要更新可用时通知您。
 
@@ -3849,9 +3849,765 @@ C:\Users\<username>\Documents\Source Insight 4.0\Projects\Abc
 
 Source Insight 还允许您定义自定义命令，这对于从 Source Insight 启动编译器和其他外部工具很有用。 请参阅：自定义命令。
 
-#### 命令
+#### <span id = "About Source Insight">About Source Insight(关于 Source Insight)</span>
 
-这是 Source Insight 中所有用户级命令的字母顺序列表。
+关于 Source Insight 命令会打开一个窗口，其中包含版权信息和 Source Insight 的版本号。 您应该参考此窗口以获取 Source Insight 的版本号和构建日期。
+
+#### <span id = "About Source Insight">Activate Menu Commands(激活菜单命令)</span>
+
+* 激活编辑菜单
+* 激活文件菜单
+* 激活帮助菜单
+* 激活选项菜单
+* 激活项目菜单
+* 激活搜索菜单
+* 激活工具菜单
+* 激活查看菜单
+* 激活窗口菜单
+* 激活系统菜单
+* 激活系统文档菜单
+
+激活菜单命令激活并从菜单栏下拉菜单。
+
+您也可以只按下并释放 Alt 键来激活 Source Insight 菜单栏，然后只需键入一个字母即可激活相应的菜单。 例如，Alt \<release> F 激活文件菜单。
+
+默认情况下，Source Insight 不使用 Alt+<菜单字母> 来激活菜单。 Alt 键可以与任何字符组合，并通过使用**键分配(Key Assignments )**命令分配给任何命令。 例如，如果您想让 Alt+F 激活文件菜单，您只需分配该键即可。 如果您想分配任何组合键来激活“文件”菜单，您可以这样做。
+
+#### <span id = "Activate Clip Window">Activate Clip Window(激活剪辑窗口)</span>
+
+打开并选择剪辑窗口。 剪辑窗口包含可以快速粘贴的小块文本。 请参阅[复制到剪辑](#Copy To Clip)
+
+#### <span id = "Activate FTP Browser">Activate FTP Browser(激活 FTP 浏览器)</span>
+
+打开并激活 FTP 浏览器面板。
+
+#### <span id = "Activate Project File List">Activate Project File List</span>(激活项目文件列表)
+
+打开并激活“项目文件列表”面板，以便您可以开始输入要打开的文件的名称。
+
+#### <span id = "Activate Project Search Bar">Activate Project Search Bar</span>(激活项目搜索栏)
+
+打开并激活项目搜索栏，它显示在主应用程序窗口顶部附近。
+
+<span id = "Activate Project Symbol List">Activate Project Symbol List
+
+<span id = "Activate Project Window">Activate Project Window
+
+<span id = "Activate Relation Window">Activate Relation Window
+
+<span id = "Activate Search Bar">Activate Search Bar
+
+<span id = "Activate Search Results">Activate Search Results
+
+<span id = "Activate Snippet Window">Activate Snippet Window
+
+<span id = "Activate Symbol Window">Activate Symbol Window
+
+<span id = "Activate Window List">Activate Window List
+
+<span id = "Add  and Remove Project Files">Add  and Remove Project Files
+
+<span id = "Add  File">Add  File
+
+<span id = "Add File List">Add File List
+
+<span id = "Advanced Options ">Advanced Options 
+
+<span id = "Arrange Windows">Arrange Windows
+
+<span id = "Activate Project Symbol List">Arrangement Toolbar
+
+<span id = "Activate Project Symbol List">Back  Tab
+
+<span id = "Activate Project Symbol List">Backspace
+
+<span id = "Activate Project Symbol List">Beginning of Line
+
+<span id = "Activate Project Symbol List">Beginning of Selection
+
+<span id = "Activate Project Symbol List">Blank Line Down
+
+<span id = "Activate Project Symbol List">Blank  Line Up
+
+<span id = "Activate Project Symbol List">Block  Down
+
+<span id = "Activate Project Symbol List">Block  Up
+
+<span id = "Activate Project Symbol List">Bookmark
+
+<span id = "Activate Project Symbol List">Bookmark  Window
+
+<span id = "Activate Project Symbol List">Bookmark Options
+
+<span id = "Activate Project Symbol List">Bottom of File
+
+<span id = "Activate Project Symbol List">Bottom of Window
+
+<span id = "Activate Project Symbol List">Browse  Files
+
+<span id = "Activate Project Symbol List">Browse Project Symbols
+
+<span id = "Activate Project Symbol List">Browse Global Symbols Dialog box
+
+<span id = "Activate Project Symbol List">Browse Local File Symbols
+
+<span id = "Activate Project Symbol List">Browser Mode
+
+<span id = "Activate Project Symbol List">Calculate
+
+<span id = "Activate Project Symbol List">Cascade Windows
+
+<span id = "Activate Project Symbol List">Check for Updates
+
+<span id = "Activate Project Symbol List">Checkpoint
+
+<span id = "Activate Project Symbol List">Checkpoint All
+
+<span id = "Activate Project Symbol List">Clear Highlights
+
+<span id = "Activate Project Symbol List">Clip Properties
+
+<span id = "Activate Project Symbol List">Clip Window
+
+<span id = "Activate Project Symbol List">Clip Window Options
+
+<span id = "Activate Project Symbol List">Close
+
+<span id = "Activate Project Symbol List">Close  All
+
+<span id = "Activate Project Symbol List">Close  Project
+
+<span id = "Activate Project Symbol List">Close Window
+
+<span id = "Activate Project Symbol List">Color Options
+
+<span id = "Activate Project Symbol List">Command Shell
+
+<span id = "Activate Project Symbol List">Compare Files
+
+<span id = "Activate Project Symbol List">Compare with Backup File
+
+<span id = "Activate Project Symbol List">Complete Snippet
+
+<span id = "Activate Project Symbol List">Complete Symbol
+
+<span id = "Activate Project Symbol List">Conditional Parsing List
+
+<span id = "Activate Project Symbol List">Context Window
+
+<span id = "Activate Project Symbol List">Context Window Options
+
+<span id = "Activate Project Symbol List">Copy
+
+<span id = "Activate Project Symbol List">Copy File Path
+
+<span id = "Activate Project Symbol List">Copy  Line
+
+<span id = "Activate Project Symbol List">Copy Line Right
+
+<span id = "Activate Project Symbol List">Copy  List
+
+<span id = "Activate Project Symbol List">Copy Project
+
+<span id = "Activate Project Symbol List">Copy Symbol
+
+<span id = "Activate Project Symbol List">Copy To Clip
+
+<span id = "Activate Project Symbol List">Create Key List
+
+<span id = "Activate Project Symbol List">Create Bookmarks from Relation Items
+
+<span id = "Activate Project Symbol List">Create Command List
+
+<span id = "Activate Project Symbol List">Cursor  Down
+
+<span id = "Activate Project Symbol List">Cursor  Left
+
+<span id = "Activate Project Symbol List">Cursor Right
+
+<span id = "Activate Project Symbol List">Cursor Up
+
+<span id = "Activate Project Symbol List">Custom Commands
+
+<span id = "Activate Project Symbol List">Cut
+
+<span id = "Activate Project Symbol List">Cut  Line
+
+<span id = "Activate Project Symbol List">Cut Line Left
+
+<span id = "Activate Project Symbol List">Cut  Line Right
+
+<span id = "Activate Project Symbol List">Cut Selection or Paste
+
+<span id = "Activate Project Symbol List">Cut  Symbol
+
+<span id = "Activate Project Symbol List">Cut To  Clip
+
+<span id = "Activate Project Symbol List">Cut  Word
+
+<span id = "Activate Project Symbol List">Cut  Word Left
+
+<span id = "Activate Project Symbol List">Deactivate License
+
+<span id = "Activate Project Symbol List">Delete
+
+<span id = "Activate Project Symbol List">Delete All Clips
+
+<span id = "Activate Project Symbol List">Delete Character
+
+<span id = "Activate Project Symbol List">Delete  Clip
+
+<span id = "Activate Project Symbol List">Delete File
+
+<span id = "Activate Project Symbol List">Delete  Line
+
+<span id = "Activate Project Symbol List">Directory Compare
+
+<span id = "Activate Project Symbol List">Directory Compare Options
+
+<span id = "Activate Project Symbol List">Display Options
+
+<span id = "Activate Project Symbol List">Drag  Line Down
+
+<span id = "Activate Project Symbol List">Drag Line Down More
+
+<span id = "Activate Project Symbol List">Drag Line Up
+
+<span id = "Activate Project Symbol List">Drag Line Up More
+
+<span id = "Activate Project Symbol List">Duplicate
+
+<span id = "Activate Project Symbol List">Duplicate Symbol
+
+<span id = "Activate Project Symbol List">Edit Condition
+
+<span id = "Activate Project Symbol List">Enable Event Handlers
+
+<span id = "Activate Project Symbol List">End of  Line
+
+<span id = "Activate Project Symbol List">End of Selection
+
+<span id = "Activate Project Symbol List">Exit
+
+<span id = "Activate Project Symbol List">Exit and Suspend
+
+<span id = "Activate Project Symbol List">Expand
+
+<span id = "Activate Project Symbol List">Expand All
+
+<span id = "Activate Project Symbol List">Expand Text Variables
+
+<span id = "Activate Project Symbol List">Expand Special
+
+<span id = "Activate Project Symbol List">Export File as HTML
+
+<span id = "Activate Project Symbol List">Export Project File List
+
+<span id = "Activate Project Symbol List">Export Project To HTML
+
+<span id = "Activate Project Symbol List">File Compare
+
+<span id = "Activate Project Symbol List">File Compare Window Options
+
+<span id = "Activate Project Symbol List">File Options
+
+<span id = "Activate Project Symbol List">File Search Bar
+
+<span id = "Activate Project Symbol List">File Search Bar Options
+
+<span id = "Activate Project Symbol List">File Type Options
+
+<span id = "Activate Project Symbol List">Folder Options
+
+<span id = "Activate Project Symbol List">FTP Browser
+
+<span id = "Activate Project Symbol List">FTP  Browser Options
+
+<span id = "Activate Project Symbol List">FTP Site List
+
+<span id = "Activate Project Symbol List">Edit  FTP Site Properties
+
+<span id = "Activate Project Symbol List">Full  Screen (F11)
+
+<span id = "Activate Project Symbol List">Function Down
+
+<span id = "Activate Project Symbol List">Function Up
+
+<span id = "Activate Project Symbol List">General Options
+
+<span id = "Activate Project Symbol List">Generate Call Tree
+
+<span id = "Activate Project Symbol List">Go  Back
+
+<span id = "Activate Project Symbol List">Go Back Toggle
+
+<span id = "Activate Project Symbol List">Go  Forward
+
+<span id = "Activate Project Symbol List">Go To First Link
+
+<span id = "Activate Project Symbol List">Go To  Line
+
+<span id = "Activate Project Symbol List">Go To Next Change
+
+<span id = "Activate Project Symbol List">Go To Previous Change
+
+<span id = "Activate Project Symbol List">Go  To Next Link
+
+<span id = "Activate Project Symbol List">Go To Previous Link
+
+<span id = "Activate Project Symbol List">Go To Next Reference Highlight
+
+<span id = "Activate Project Symbol List">Go To Previous Reference Highlight
+
+<span id = "Activate Project Symbol List">Help
+
+<span id = "Activate Project Symbol List">Help  Mode
+
+<span id = "Activate Project Symbol List">Highlight Word
+
+<span id = "Activate Project Symbol List">Incremental Search
+
+<span id = "Activate Project Symbol List">Incremental Search Mode
+
+<span id = "Activate Project Symbol List">Incremental Search Backward
+
+<span id = "Activate Project Symbol List">Horizontal Scroll Bar
+
+<span id = "Activate Project Symbol List">HTML  Help
+
+<span id = "Activate Project Symbol List">Import External Symbols
+
+<span id = "Activate Project Symbol List">Import External Symbols for Current  Project
+
+<span id = "Activate Project Symbol List">Indent  Left
+
+<span id = "Activate Project Symbol List">Indent Right
+
+<span id = "Activate Project Symbol List">Insert ASCII
+
+<span id = "Activate Project Symbol List">Insert  File
+
+<span id = "Activate Project Symbol List">Insert  GUID
+
+<span id = "Activate Project Symbol List">Insert Line
+
+<span id = "Activate Project Symbol List">Insert Line Before Next
+
+<span id = "Activate Project Symbol List">Insert New Line
+
+<span id = "Activate Project Symbol List">Join Lines
+
+<span id = "Activate Project Symbol List">Jump To Base Type
+
+<span id = "Activate Project Symbol List">Jump To Caller
+
+<span id = "Activate Project Symbol List">Jump To Definition
+
+<span id = "Activate Project Symbol List">Jump To Link
+
+<span id = "Activate Project Symbol List">Jump To Prototype
+
+<span id = "Activate Project Symbol List">Key Assignments
+
+<span id = "Activate Project Symbol List">Language Options
+
+<span id = "Activate Project Symbol List">Language Properties
+
+<span id = "Activate Project Symbol List">Last Window (Ctrl+Tab) or (Ctrl+Shift+Tab)
+
+<span id = "Activate Project Symbol List">Layout Toolbar
+
+<span id = "Activate Project Symbol List">Line  Numbers
+
+<span id = "Activate Project Symbol List">Link All Windows
+
+<span id = "Activate Project Symbol List">Link Window
+
+<span id = "Activate Project Symbol List">Load Configuration
+
+<span id = "Activate Project Symbol List">Load File
+
+<span id = "Activate Project Symbol List">Load Layout
+
+<span id = "Activate Project Symbol List">Load Search  String
+
+<span id = "Activate Project Symbol List">Lock Context Window
+
+<span id = "Activate Project Symbol List">Lock Relation Window
+
+<span id = "Activate Project Symbol List">Logging Options
+
+<span id = "Activate Project Symbol List">Lookup References
+
+<span id = "Activate Project Symbol List">Make Column Selection
+
+<span id = "Activate Project Symbol List">Manage  License
+
+<span id = "Activate Project Symbol List">Manage Visual Themes
+
+<span id = "Activate Project Symbol List">Menu Assignments 
+
+<span id = "Activate Project Symbol List">Mono Font View
+
+<span id = "Activate Project Symbol List">New
+
+<span id = "Activate Project Symbol List">New Clip
+
+<span id = "Activate Project Symbol List">New Relation Window
+
+<span id = "Activate Project Symbol List">New Project
+
+<span id = "Activate Project Symbol List">New  Window
+
+<span id = "Activate Project Symbol List">Next  File
+
+<span id = "Activate Project Symbol List">Next Relation Window View
+
+<span id = "Activate Project Symbol List">Open
+
+<span id = "Activate Project Symbol List">Open As  Encoding
+
+<span id = "Activate Project Symbol List">Open Backup  File
+
+<span id = "Activate Project Symbol List">Open Project
+
+<span id = "Activate Project Symbol List">Outline Toolbar
+
+<span id = "Activate Project Symbol List">Outlining Options
+
+<span id = "Activate Project Symbol List">Overview Options
+
+<span id = "Activate Project Symbol List">Page  Down
+
+<span id = "Activate Project Symbol List">Page  Setup
+
+<span id = "Activate Project Symbol List">Page Up
+
+<span id = "Activate Project Symbol List">Paren  Left
+
+<span id = "Activate Project Symbol List">Paren  Right
+
+<span id = "Activate Project Symbol List">Parse Source Links
+
+<span id = "Activate Project Symbol List">Paste
+
+<span id = "Activate Project Symbol List">Paste From Clip
+
+<span id = "Activate Project Symbol List">Paste  Line
+
+<span id = "Activate Project Symbol List">Paste  Symbol
+
+<span id = "Activate Project Symbol List">Pick  Window
+
+<span id = "Activate Project Symbol List">Play Recording
+
+<span id = "Activate Project Symbol List">Preferences
+
+<span id = "Activate Project Symbol List">Print
+
+<span id = "Activate Project Symbol List">Print Relation Window
+
+<span id = "Activate Project Symbol List">Project  File Types
+
+<span id = "Activate Project Symbol List">Project File Type List Properties
+
+<span id = "Activate Project Symbol List">Project Folder Browser
+
+<span id = "Activate Project Symbol List">Project Folder Browser Options
+
+<span id = "Activate Project Symbol List">Project  File List
+
+<span id = "Activate Project Symbol List">Project File List Options
+
+<span id = "Activate Project Symbol List">Project Search Bar
+
+<span id = "Activate Project Symbol List">Project Rebuild Notice
+
+<span id = "Activate Project Symbol List">Project Symbol Categories
+
+<span id = "Activate Project Symbol List">Project Symbol Category Window Options
+
+<span id = "Activate Project Symbol List">Project Symbol List
+
+<span id = "Activate Project Symbol List">Project  Symbol List Options
+
+<span id = "Activate Project Symbol List">Project  Settings
+
+<span id = "Activate Project Symbol List">Project Report
+
+<span id = "Activate Project Symbol List">Project Window command
+
+<span id = "Activate Project Symbol List">Rebuild Project
+
+<span id = "Activate Project Symbol List">Redo
+
+<span id = "Activate Project Symbol List">Redo  All
+
+<span id = "Activate Project Symbol List">Redraw Screen
+
+<span id = "Activate Project Symbol List">Reform Paragraph
+
+<span id = "Activate Project Symbol List">Reformat  Source Code Options
+
+<span id = "Activate Project Symbol List">Refresh Relation Window
+
+<span id = "Activate Project Symbol List">Reload As  Encoding
+
+<span id = "Activate Project Symbol List">Relation  Window Graph Options
+
+<span id = "Activate Project Symbol List">Relation Window
+
+<span id = "Activate Project Symbol List">Relation Window Options
+
+<span id = "Activate Project Symbol List">Reload  File
+
+<span id = "Activate Project Symbol List">Reload Modified Files
+
+<span id = "Activate Project Symbol List">Remove  File
+
+<span id = "Activate Project Symbol List">Remove Project
+
+<span id = "Activate Project Symbol List">Remote Options
+
+<span id = "Activate Project Symbol List">Rename
+
+<span id = "Activate Project Symbol List">Renumber
+
+<span id = "Activate Project Symbol List">Repeat Typing
+
+<span id = "Activate Project Symbol List">Replace
+
+<span id = "Activate Project Symbol List">Replace Files
+
+<span id = "Activate Project Symbol List">Restore File 
+
+<span id = "Activate Project Symbol List">Restore Lines
+
+<span id = "Activate Project Symbol List">Save
+
+<span id = "Activate Project Symbol List">Save A  Copy
+
+<span id = "Activate Project Symbol List">Save  All
+
+<span id = "Activate Project Symbol List">Save All Quietly
+
+<span id = "Activate Project Symbol List">Save As
+
+<span id = "Activate Project Symbol List">Save As  Encoding
+
+<span id = "Activate Project Symbol List">Save  Configuration
+
+<span id = "Activate Project Symbol List">Save Layout
+
+<span id = "Activate Project Symbol List">Save New Backup File 
+
+<span id = "Activate Project Symbol List">Save  Selection
+
+<span id = "Activate Project Symbol List">Save Settings 
+
+<span id = "Activate Project Symbol List">Save Workspace
+
+<span id = "Activate Project Symbol List">Scroll Bar  Options
+
+<span id = "Activate Project Symbol List">Scroll Half Page Down
+
+<span id = "Activate Project Symbol List">Scroll Half Page Up
+
+<span id = "Activate Project Symbol List">Scroll  Left
+
+<span id = "Activate Project Symbol List">Scroll Line Down
+
+<span id = "Activate Project Symbol List">Scroll Line Up
+
+<span id = "Activate Project Symbol List">Scroll Right
+
+<span id = "Activate Project Symbol List">SDK Help
+
+<span id = "Activate Project Symbol List">Search
+
+<span id = "Activate Project Symbol List">Search Backward
+
+<span id = "Activate Project Symbol List">Search Backward for Selection
+
+<span id = "Activate Project Symbol List">Search Engines
+
+<span id = "Activate Project Symbol List">Search Files
+
+<span id = "Activate Project Symbol List">Search Forward
+
+<span id = "Activate Project Symbol List">Search Forward for Selection
+
+<span id = "Activate Project Symbol List">Search  List
+
+<span id = "Activate Project Symbol List">Searching  Options
+
+<span id = "Activate Project Symbol List">Search Project
+
+<span id = "Activate Project Symbol List">Search Results Options
+
+<span id = "Activate Project Symbol List">Search Web
+
+<span id = "Activate Project Symbol List">Select All
+
+<span id = "Activate Project Symbol List">Select Block 
+
+<span id = "Activate Project Symbol List">Select Char Left
+
+<span id = "Activate Project Symbol List">Select Char Right
+
+<span id = "Activate Project Symbol List">Select Function or Symbol
+
+<span id = "Activate Project Symbol List">Select  Line
+
+<span id = "Activate Project Symbol List">Select Line Down
+
+<span id = "Activate Project Symbol List">Select Line Up
+
+<span id = "Activate Project Symbol List">Select  Match
+
+<span id = "Activate Project Symbol List">Select Next Window
+
+<span id = "Activate Project Symbol List">Select Sentence
+
+<span id = "Activate Project Symbol List">Select Symbol
+
+<span id = "Activate Project Symbol List">Select  To
+
+<span id = "Activate Project Symbol List">Select To End Of File
+
+<span id = "Activate Project Symbol List">Select To Top Of File
+
+<span id = "Activate Project Symbol List">Select  Word
+
+<span id = "Activate Project Symbol List">Select Word Left
+
+<span id = "Activate Project Symbol List">Select Word Right
+
+<span id = "Activate Project Symbol List">Selection History
+
+<span id = "Activate Project Symbol List">Setup HTML Help
+
+<span id = "Activate Project Symbol List">Setup WinHelp File
+
+<span id = "Activate Project Symbol List">Show Clipboard
+
+<span id = "Activate Project Symbol List">Show File Status
+
+<span id = "Activate Project Symbol List">Simple Tab
+
+<span id = "Activate Project Symbol List">Smart End of Line
+
+<span id = "Activate Project Symbol List">Smart Beginning of Line
+
+<span id = "Activate Project Symbol List">Smart Rename
+
+<span id = "Activate Project Symbol List">Smart  Tab
+
+<span id = "Activate Project Symbol List">Snippet  Properties
+
+<span id = "Activate Project Symbol List">Snippet Window
+
+<span id = "Activate Project Symbol List">Snippet Window Options
+
+<span id = "Activate Project Symbol List">Sort Symbol Window
+
+<span id = "Activate Project Symbol List">Sort Symbols By Line
+
+<span id = "Activate Project Symbol List">Sort Symbols by Name
+
+<span id = "Activate Project Symbol List">Sort Symbols By Type
+
+<span id = "Activate Project Symbol List">Source Dynamics on the Web
+
+<span id = "Activate Project Symbol List">Start Recording
+
+<span id = "Activate Project Symbol List">Stop  Recording
+
+<span id = "Activate Project Symbol List">Style Properties
+
+<span id = "Activate Project Symbol List">Symbol  Info
+
+<span id = "Activate Project Symbol List">Symbol Lookup Options
+
+<span id = "Activate Project Symbol List">Symbol Type Filter
+
+<span id = "Activate Project Symbol List">Symbol Window command
+
+<span id = "Activate Project Symbol List">Symbol Window Options
+
+<span id = "Activate Project Symbol List">Sync File Windows
+
+<span id = "Activate Project Symbol List">Synchronize Files
+
+<span id = "Activate Project Symbol List">Syntax Decorations
+
+<span id = "Activate Project Symbol List">Syntax Formatting
+
+<span id = "Activate Project Symbol List">Syntax Keyword List
+
+<span id = "Activate Project Symbol List">Tab  Tray
+
+<span id = "Activate Project Symbol List">Tabs to Spaces
+
+<span id = "Activate Project Symbol List">Tile Horizontal
+
+<span id = "Activate Project Symbol List">Tile One Window
+
+<span id = "Activate Project Symbol List">Tile Two Windows
+
+<span id = "Activate Project Symbol List">Tile  Vertical
+
+<span id = "Activate Project Symbol List">Toggle Extend Mode 
+
+<span id = "Activate Project Symbol List">Toggle Insert Mode
+
+<span id = "Activate Project Symbol List">Top of  File
+
+<span id = "Activate Project Symbol List">Top of Window
+
+<span id = "Activate Project Symbol List">Touch All Files in Relation
+
+<span id = "Activate Project Symbol List">Typing Options
+
+<span id = "Activate Project Symbol List">Undo
+
+<span id = "Activate Project Symbol List">Undo  All
+
+<span id = "Activate Project Symbol List">Vertical Scroll Bar
+
+<span id = "Activate Project Symbol List">View Clip
+
+<span id = "Activate Project Symbol List">View  Relation Outline
+
+<span id = "Activate Project Symbol List">View Relation Window Horizontal Graph
+
+<span id = "Activate Project Symbol List">View Relation Window Vertical Graph
+
+<span id = "Activate Project Symbol List">View  Toolbar
+
+<span id = "Activate Project Symbol List">Visible Tabs
+
+<span id = "Activate Project Symbol List">Visible Tabs and Spaces
+
+<span id = "Activate Project Symbol List">Visible Tabs and Spaces
+
+<span id = "Activate Project Symbol List">Window List Options
+
+<span id = "Activate Project Symbol List">Window Options
+
+<span id = "Activate Project Symbol List">Window Tabs
+
+<span id = "Activate Project Symbol List">Window Tab Options
+
+<span id = "Activate Project Symbol List">Word Fragment Left
+
+<span id = "Activate Project Symbol List">Word Fragment Right
+
+<span id = "Activate Project Symbol List">Word  Left
+
+<span id = "Activate Project Symbol List">Word  Right
+
+<span id = "Activate Project Symbol List">Zoom Window
 
 ## 五、宏语言指南
 
