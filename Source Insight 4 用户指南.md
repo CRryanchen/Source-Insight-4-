@@ -4739,18 +4739,976 @@ while (iwnd < cwnd)
 
 ### 窗口函数
 
+窗口函数允许操作源文件窗口。 文件缓冲区显示在源窗口中。 hwnd 通常是一个小整数值。 hNil 的 hwnd 指示错误。
+
+这些函数使用窗口句柄 (hwnd) 参数。 这些是打开源文件窗口的宏观句柄。 请注意，宏 hwnd 在概念上类似，但与 Microsoft Windows API 中的窗口句柄 HWND 并不完全相同。
+
+每个源窗口都有一个选择，它描述了选择了哪些字符。 有关详细信息，请参阅 GetWndSel (hwnd)。
+
+在某些函数中，窗口句柄 (hwnd) 也可以表示系统级窗口的句柄，例如应用程序窗口。 系统级窗口不包含文件缓冲区或选择。GetApplicationWnd 函数返回 Source Insight 应用程序窗口的句柄。
+
+CloseWnd  (hwnd)
+
+关闭窗口 hwnd。 关闭窗口不会关闭窗口中显示的文件缓冲区。
+
+GetApplicationWnd ()
+
+返回 Source Insight 应用程序窗口的窗口句柄。
+
+> 这与系统级窗口句柄不同。 它是 Source Insight 宏级别句柄值。
+
+返回的句柄可以传递给不假定文件缓冲区或选择的函数，例如 GetWndDim 和 IsWndMax。
+
+GetCurrentWnd ()
+
+返回活动的、最前面的源文件窗口的句柄，如果没有打开的窗口，则返回 hNil。
+
+GetNextWnd  (hwnd)
+
+返回 hwnd 之后窗口 Z 顺序中的下一个窗口句柄。 这通常是前一个活动窗口。 如果没有其他窗口，GetNextWnd 返回 hNil。
+
+例如，如果 hwnd 是最顶层的窗口，则 GetNextWnd(hwnd) 将返回下一个窗口。 请注意，如果您使用 SetCurrentWnd 设置最前面的活动窗口，则对 GetNextWnd 的后续调用会受到影响。
+
+GetWndBuf (hwnd)
+
+返回显示在窗口 hwnd 中的文件缓冲区的句柄。
+
+GetWndClientRect (hwnd)
+
+返回一个 Rect 记录，其中包含给定窗口的客户矩形。 坐标在窗口的本地坐标系中给出。 客户矩形不包括窗口的框架或其他非客户区域。 请参阅：矩形记录。
+
+GetWndDim  (hwnd)
+
+返回一个 DIM 记录，它描述了给定窗口 hwnd 的像素尺寸。 请参阅：DIM 记录。
+
+返回的水平尺寸仅为窗口文本区域的宽度。 它不包括左边距或附加到源窗口的符号窗口。
+
+GetWndHandle (hbuf)
+
+返回显示由 hbuf 指定的文件缓冲区的最前面窗口的窗口句柄。 如果文件缓冲区不在窗口中，则 GetWndHandle 返回 hNil。
+
+由于文件缓冲区可能出现在多个窗口中，因此 GetWndHandle 按从前到后的顺序搜索所有窗口。 因此，如果指定的文件缓冲区是活动窗口中的当前缓冲区，则始终返回该窗口的句柄。
+
+GetWndHorizScroll (hwnd)
+
+返回窗口 hwnd 的水平滚动状态。 水平滚动状态是滚动的像素数。
+
+GetWndLineCount (hwnd)
+
+以行为单位返回窗口 hwnd 的垂直大小。 这是窗口中可能可见的最大行数。 如果文件缓冲区没有填满整个窗口，GetWndLineCount 仍将返回最大行数。
+
+GetWndLineWidth (hwnd, ln, cch)
+
+返回给定窗口中指定文本行的宽度。
+
+输入：
+
+| Parameter | Description                                                  |
+| --------- | ------------------------------------------------------------ |
+| hwnd      | 窗口                                                         |
+| ln        | 包含要测量的文本的行号。 如果 ln 超出范围，则返回 –1。       |
+| cch       | 要在该行上测量的字符数。 如果 cch 设置为 –1，则测量整个线路长度。 |
+
+此函数允许您测量给定窗口中字符的宽度。 由于每个窗口使用的字体由文件的文档类型决定，文本的宽度可能因窗口而异。 语法格式也会影响文本的宽度。
+
+此函数可与 ScrollWndHoriz 一起使用以滚动窗口以显示特定字符。
+
+例子：
+
+要在第 100 行找到整行的宽度：
+
+````
+dim = GetWndLineWidth(hwnd, 100, -1)
+Msg ("Line 100 is " # dim.cxp # " pixels wide.")
+````
+
+要查找第 200 行的前 3 个字符的宽度：
+
+````
+Dim = GetWndLineWidth(hwnd, 200, 3)
+````
+
+GetWndParent (hwnd) 
+
+返回窗口的父窗口句柄。 如果没有父级，则返回 hNil。
+
+GetWndRect  (hwnd)
+
+返回一个 Rect 记录，其中包含给定窗口的屏幕矩形坐标。 矩形包括窗口框架和非客户区。 请参阅：矩形记录。
+
+GetWndSel (hwnd)
+
+返回由 hwnd 指定的窗口的选择状态。 选择状态在选择记录中返回。 请参阅：选择记录。
+
+GetWndSelIchFirst (hwnd)
+
+返回窗口 hwnd 中所选内容中第一个字符的索引。
+
+GetWndSelIchLim (hwnd)
+
+返回窗口 hwnd 中所选内容中最后一个字符的索引。
+
+GetWndSelLnFirst (hwnd)
+
+返回窗口 hwnd 中所选内容的第一行号。
+
+GetWndSelLnLast (hwnd)
+
+返回窗口 hwnd 中所选内容的最后行号。
+
+GetWndVertScroll (hwnd)
+
+返回窗口 hwnd 的垂直滚动状态。 垂直滚动状态是显示在窗口顶部的行号。
+
+IchFromXpos (hwnd, ln, xp)
+
+返回给定窗口中行号 (ln) 上给定像素 x 位置 (xp) 的字符索引。 字符索引是指定行上字符的从零开始的索引。 在调用此函数时，该行实际上不必显示在窗口中。 请参阅：XposFromIch（hwnd、ln、ich）。
+
+输入：
+
+| Parameter | Description                                                  |
+| --------- | ------------------------------------------------------------ |
+| hwnd      | 窗口                                                         |
+| ln        | 包含要测量的文本的行号。 如果 ln 超出范围，则返回 –1         |
+| xp        | x 位置，相对于整个窗口的左边缘。 如果 xp 超过行宽，则返回该行的字符总数 |
+
+> 您可以使用 XposFromIch 函数执行反向映射。
+
+IsWndMax  (hwnd)
+
+如果窗口 hwnd 当前最大化，则返回 TRUE。
+
+IsWndMin  (hwnd)
+
+如果窗口 hwnd 当前最小化，则返回 TRUE。
+
+IsWndRestored (hwnd)
+
+如果窗口 hwnd 当前未最大化且未最小化，则返回 TRUE。
+
+LineFromYpos (hwnd, ypos)
+
+返回位于给定窗口中给定 y 像素位置的行号。 y 位置相对于窗口的上边缘。 如果行号在窗口中不可见，则返回 -1。 请参阅：YposFromLine (hwnd, ln)。
+
+输入：
+
+| Parameter | Description                                                  |
+| --------- | ------------------------------------------------------------ |
+| hwnd      | 窗口                                                         |
+| ypos      | 相对于窗口顶部的 y 像素位置。 Ypos 值在窗口顶部为零，在窗口底部为正值。 如果 ypos 不在窗口内，则返回 -1 |
+
+> 您可以使用 YposFromLine 函数执行反向映射。
+
+MaximizeWnd  (hwnd)
+
+最大化（或“缩放”）由 hwnd 指定的窗口。
+
+MinimizeWnd  (hwnd)
+
+最小化（或“图标化”）由 hwnd 指定的窗口。
+
+NewWnd  (hbuf)
+
+创建一个新窗口并在窗口中显示文件缓冲区 hbuf。 NewWnd 返回窗口句柄，如果出错则返回 hNil。
+
+ScrollWndHoriz (hwnd, pixel_count)
+
+按 pixel_count 中给定的量水平滚动窗口 hwnd。
+
+如果 pixel_count 小于零，则在行中向后滚动（屏幕内容向右滚动）。
+
+如果 pixel_count 大于零，则在行中向前滚动（屏幕内容向左滚动）。
+
+ScrollWndToLine (hwnd, ln)
+
+滚动窗口 hwnd 以在窗口顶部显示行号。
+
+ScrollWndVert (hwnd, line_count)
+
+按 line_count 中给定的量垂直滚动窗口 hwnd。
+
+如果 line_count 小于零，则在文件中向后滚动（屏幕内容向下滚动）。
+
+如果 line_count 大于零，则在文件中向前滚动（屏幕内容向上滚动）。
+
+SetCurrentWnd (hwnd)
+
+设置最前面的活动窗口。 Hwnd 是要激活的窗口句柄。
+
+SetWndRect (hwnd, left, top, right, bottom) 
+
+设置给定窗口的新位置。 Z 顺序不受影响。 给定的坐标在窗口的父窗口的局部像素坐标系中。 如果窗口是应用程序窗口，那么坐标系就是全局屏幕像素坐标系。
+
+SetWndSel  (hwnd, selection_record)
+
+将 hwnd 指定的窗口的选择状态设置为 selection_record 中给出的选择记录。 请参阅：GetWndSel (hwnd)。请参阅选择记录。
+
+ToggleWndMax (hwnd)
+
+在最大化和恢复大小之间切换窗口 hwnd。
+
+XposFromIch (hwnd, ln, ich)
+
+返回给定窗口中行号 (ln) 上给定字符位置 (ich) 的像素 x 位置编号。 x 位置相对于整个窗口的左边缘。 在调用此函数时，该行实际上不必显示在窗口中。 请参阅：IchFromXpos（hwnd、ln、xp）。
+
+输入:
+
+| Parameter | Description                                                  |
+| --------- | ------------------------------------------------------------ |
+| hwnd      | 窗口                                                         |
+| ln        | 包含要测量的文本的行号。 如果 ln 超出范围，则返回 –1         |
+| ich       | 字符索引，它是指定行上字符的从零开始的索引。 如果 ich 超过行中的字符数，则返回行尾的 x 位置。 |
+
+> 您可以使用 IchFromXpos 函数执行反向映射。
+
+YposFromLine (hwnd, ln)
+
+返回给定窗口中给定行号 (ln) 的像素 y 位置。 y 位置相对于窗口的上边缘。 如果行号在窗口中不可见，则返回 -1。 请参阅：LineFromYpos (hwnd, ypos)。
+
+输入：
+
+| Parameter | Description                                                  |
+| --------- | ------------------------------------------------------------ |
+| hwnd      | 窗口                                                         |
+| ln        | 包含要测量的文本的行号。 如果 ln 在文件中超出范围，或者在窗口中不可见，则返回 –1。 |
+
+> 您可以使用 LineFromYpos 函数执行反向映射。
+
+YdimFromLine (hwnd,  ln)
+
+返回给定窗口中给定行号 (ln) 的像素高度尺寸。 如果行号在窗口中不可见，则返回 -1。 请参阅：YposFromLine (hwnd, ln)。
+
+输入：
+
+| Parameter | Description                                                  |
+| --------- | ------------------------------------------------------------ |
+| hwnd      | 窗口                                                         |
+| ln        | 包含要测量的文本的行号。 如果 ln 在文件中超出范围，或者在窗口中不可见，则返回 –1。 |
+
 ### 书签功能
+
+所有书签都保存在一个书签列表中。 您可以使用书签功能来枚举所有书签，以及添加和删除书签。 书签列表保存在工作区文件中。
+
+BookmarksAdd (name, filename, ln, ich)
+
+添加新书签。 新的书签名称在名称中。 书签位置在字符索引 ich 的行号 ln 处的文件文件名中。
+
+成功则返回 True，错误则返回 False。
+
+BookmarksCount ()
+
+此函数返回书签列表中的书签数。 使用 BookmarksItem 访问列表中特定索引处的书签。
+
+BookmarksDelete (name)
+
+删除名为 name 的书名。
+
+BookmarksItem (index)
+
+此函数返回给定索引处的书签。 书签列表的大小由 BookmarksCount 返回。 索引值从零开始，一直到比 BookmarksCount 返回的值小一。
+
+此示例枚举所有书签：
+
+````
+cmark = BookmarksCount()
+imark = 0
+while (imark < cmark)
+   {
+   bookmark = BookmarksItem(imark)
+   // … do something with bookmark 
+   imark = imark + 1
+   }
+````
+
+请参阅：书签记录。
+
+BookmarksLookupLine (filename, ln)
+
+在给定位置搜索书签。 该文件在filename 中，行号为ln。
+
+返回书签记录，如果找不到书签则返回 nil。 请参阅：书签记录。
+
+BookmarksLookupName (name)
+
+搜索名为 name 的书签。
+
+如果找不到书签，则返回书签记录或 nil。 请参阅：书签记录。
 
 ### 符号列表函数
 
+符号列表是符号记录的从零开始的索引集合。 请参阅：符号记录。
+
+一些符号访问函数返回符号列表句柄。
+
+符号列表是分配的资源，当您完成访问它们时，应使用 SymListFree 释放这些资源。 当宏终止时，Source Insight 会自动清理动态分配的资源。 但是，如果您在没有释放未使用的句柄的情况下分配了许多句柄，Source Insight 可能会耗尽资源。
+
+SymListCount ()
+
+此函数返回符号列表中的符号数。 使用 SymListItem 访问列表中特定的从零开始的索引处的符号记录。 请参阅：符号记录。
+
+SymListFree  (hsyml)
+
+此函数取消分配给定的符号列表。
+
+SymListInsert (hsyml, isymBefore,  symbolNew)
+
+此函数将符号记录插入符号列表 hsyml。 该符号恰好插入到 isymBefore 之前。 如果 isymBefore 为 –1，则该符号将附加到列表的末尾。 符号记录在 symbolNew 中给出。 请参阅：符号记录。
+
+SymListItem  (hsyml, isym)
+
+此函数返回符号列表 hsyml 中从零开始的索引 isym 处的符号记录。 符号列表的大小由 SymListCount 返回。 请参阅：符号记录。
+
+索引值从零开始，一直到比 SymListCount 返回的值小一。
+
+此示例枚举符号列表中的所有符号：
+
+````
+csym = SymListCount(hsyml)
+isym = 0
+while (isym < csym)
+   {
+   symbol = SymListItem(isym)
+   // … do something with symbol 
+   Msg ("symbol name = " # symbol.name)
+   isym = isym + 1
+   }
+````
+
+SymListNew  ()
+
+分配一个新的空符号列表。 返回新的交易品种列表句柄，如果出错则返回 hNil。 当您完成交易品种列表时，您应该调用 SymListFree。
+
+SymListRemove (hsyml, isym)
+
+从符号列表 hsyml 中删除一个元素。 isym 处的符号元素被删除。
+
 ### 符号函数
+
+符号函数允许您访问 Source Insight 的符号查找引擎。 Source Insight 在符号数据库中维护有关项目的符号信息。 这些符号函数利用符号数据库和 Source Insight 的内置语言解析器来定位源文件中的符号。
+
+您可能需要查看“项目”一章中的“符号和项目”部分，了解 Source Insight 如何维护符号信息以及查找规则是什么的描述。
+
+符号记录
+符号记录描述了一个符号声明。 它指定符号的位置和类型。 它用于唯一地描述项目中或打开的文件缓冲区中的符号。
+
+符号记录由多个函数返回，符号记录用作多个函数的输入。 请参阅：符号记录。
+
+GetBufSymCount(hbuf)
+
+返回缓冲区 hbuf 中声明的符号数。 如果没有声明任何符号，或者无法处理文件，或者文件的文档类型没有指定语言解析器，则返回零。
+
+GetBufSymLocation(hbuf, isym)
+
+返回缓冲区 hbuf 中由 isym 索引的符号的符号记录。 每个已解析的文件缓冲区都维护其中定义的符号索引。 索引按交易品种名称排序。 符号索引值从零开始，直到 GetBufSymCount 返回的计数减一。 此函数将符号索引 (isym) 映射到符号符号记录中。
+
+请参阅：符号记录。
+
+GetBufSymName(hbuf, isym)
+
+返回缓冲区 hbuf 中由 isym 索引的符号的名称。 每个已解析的文件缓冲区都维护其中定义的符号索引。 索引按交易品种名称排序。 符号索引值从零开始，直到 GetBufSymCount 返回的计数减一。 此函数将符号索引 (isym) 映射到符号名称。
+
+此示例遍历所有文件缓冲区符号：
+
+````
+isymMax = GetBufSymCount (hbuf)
+isym = 0
+while (isym < isymMax)
+   {
+   symname = GetBufSymName (hbuf, isym)
+   ...
+   isym = isym + 1
+   }
+````
+
+GetCurSymbol ()
+
+返回当前选择所在的交易品种的名称。 当前选择是活动窗口中的选择（或光标位置）。 如果未找到符号，GetCurSymbol 将返回一个空字符串。
+
+GetSymbolLine (symbol_name)
+
+返回名为 symbol_name 的符号的行号。 如果用相同的名称定义了多个符号，则用户将能够选择合适的一个。
+
+GetSymbolLocation (symbol_name)
+
+返回在 symbol_name 中指定的符号名称的位置。 该位置在符号记录中返回。 如果未找到该符号，则返回一个空字符串。 请参阅：符号记录。
+
+此函数执行查找操作的方式与使用跳转到定义命令时 Source Insight 查找符号的方式相同。 如果在当前项目或任何打开的文件中都没有找到符号，那么也会搜索项目符号路径上的所有项目。 如果为 symbol_name 找到多个声明，则用户会看到一个多定义列表以供选择。
+
+您还可以调用 GetSymbolLocationEx 以更好地控制查找操作的执行方式，并找到相同符号名称的多个定义。
+
+此示例查找符号的定义并显示其源文件和行号。
+
+````
+symbol = Ask("What symbol do you want to locate?")
+loc = GetSymbolLocation(symbol)
+if (loc == "")
+   Msg (symbol # " was not found")
+else
+   Msg (symbol # " was found in " # loc.file # 
+         " at line " # loc.lnFirst)
+````
+
+**定位文件名**
+
+GetSymbolLocation 也可以查找文件名。 通过给一个简单的文件名作为 symbol_name 参数，GetSymbolLocation 可以在项目中或在项目符号路径上查找文件，并在 location.file 字段中返回文件的完全限定路径。 这对于将简单文件名扩展到其完整路径很有用。
+
+例如：
+
+````
+loc = GetSymbolLocation("simple.c")
+fullfilename = loc.file
+// fullfilename could be something like "d:\proj\simple.c"
+````
+
+GetSymbolLocationEx (symbol_name, output_buffer,  fMatchCase, LocateFiles, fLocateSymbols)
+
+查找 symbol_name 中指定的符号的所有声明。 每个声明位置作为符号记录附加到给定缓冲区 output_buffer 的一行。 如果是 fMatchCase，则符号名称大小写必须完全匹配。 如果是 fLocateFiles，则找到项目中或项目符号路径中的文件名。 不必指定文件扩展名。 如果是 fLocateSymbols，则定位符号定义。 fLocateFiles 和 fLocateSymbols 都可以设置为 True。
+
+请参阅：符号记录。
+
+由于记录变量可以表示为字符串，因此符号记录可以写为缓冲区中的一行文本。 要从输出缓冲区读取 Symbol 记录，请使用 GetBufLine 函数返回整行文本； 在本例中是符号记录。 有关符号记录的说明，请参阅 GetSymbolLocation。
+
+GetSymbolLocationEx 返回匹配声明的数量，如果未找到则返回零。
+
+与 GetSymbolLocation 函数不同，此函数将查找与 symbol_name 匹配的多个声明。 您可以使用此函数通过扫描输出缓冲区的每一行来枚举每个位置。
+
+此示例查找符号并枚举找到的每个声明：
+
+````
+symbol = Ask("What symbol do you want to locate?")
+hbuf = NewBuf("output")
+count = GetSymbolLocationEx(symbol, hbuf, 1, 1, 1)
+ln = 0
+while (ln < count)
+   {
+   loc = GetBufLine(hbuf, ln)
+   msg (loc.file # " at line " # loc.lnFirst)
+   ln = ln + 1
+   }
+CloseBuf(hbuf)
+````
+
+**定位文件名**
+
+GetSymbolLocationEx 也可以查找文件名。 通过给一个简单的文件名作为 symbol_name 参数，GetSymbolLocationEx 可以在项目中或在项目符号路径上查找文件，并在 location.file 字段中返回文件的完全限定路径。 有关示例，请参见 GetSymbolLocation。
+
+GetSymbolFromCursor (hbuf, ln, ich)
+
+返回出现在给定光标位置的符号名称的符号记录。 hbuf 是缓冲区句柄。 ln 是行号。 ich 是行中从零开始的字符索引。
+
+这与跳转到定义命令的工作方式类似，只是它返回符号记录，而不是跳转。 请参阅：符号记录。
+
+GetSymbolLocationFromLn (hbuf, ln)
+
+返回缓冲区 hbuf 中行号 ln 处存在的符号的符号记录。 ln 处的符号是其声明包含给定行号 ln 的符号。 请参阅：符号记录。
+
+JumpToLocation (symbol_record)
+
+跳转到 symbol_record 中给定的位置。 这将打开符号记录中的文件并将光标移动到此处定义的符号。 这与跳转到定义命令的工作方式相同。
+
+符号记录由 GetSymbolLocation 函数返回。 请参阅：符号记录。
+
+JumpToSymbolDef (symbol_name)
+
+跳转到名为 symbol_name 的符号的定义。 这将打开一个文件并将光标移动到那里定义的符号。 这与跳转到定义命令的工作方式相同。
+
+SymbolChildren (symbol)
+
+返回包含给定符号的子项的新符号列表句柄。 符号的子代是在符号主体内声明的符号。 例如，班级的孩子是班级成员。
+
+symbol 包含一条 Symbol 记录。 请参阅：符号记录。
+
+您应该调用 SymListFree 来释放 SymbolChildren 返回的符号列表句柄。
+
+您可以使用符号列表函数访问此函数返回的符号列表。
+
+例子
+此示例查找符号的定义并显示其子项：
+
+````
+symbolname = Ask("What symbol do you want to locate?")
+symbol = GetSymbolLocation(symbolname)
+if (symbol == nil)
+   Msg (symbolname # " was not found")
+else
+   {
+   hsyml = SymbolChildren(symbol)
+   cchild = SymListCount(hsyml)
+   ichild = 0
+   while (ichild < cchild)
+      {
+      childsym = SymListItem(hsyml, ichild)
+      Msg (childsym.symbol # " was found in " 
+         # childsym.file # " at line " # childsym.lnFirst)
+      ichild = ichild + 1
+      }
+   SymListFree(hsyml)
+   }
+````
+
+SymbolContainerName (symbol)
+
+返回符号名称的容器组件。
+
+symbol 包含一条 Symbol 记录。 请参阅：符号记录。
+
+每个符号名称都分为路径组件，路径组件由点 (.) 字符分隔。 例如，符号名称可能是“myclass.member1”。 在此示例中，“member1”包含在“myclass”中。
+
+SymbolDeclaredType (symbol)
+
+返回给定符号的声明类型的符号记录。
+
+symbol 包含一条 Symbol 记录。 请参阅：符号记录。
+
+SymbolLeafName (symbol)
+
+返回符号名称的“叶”或最右边的组件。
+
+symbol 包含一条 Symbol 记录。 请参阅：符号记录。
+
+每个符号名称都分为路径组件，路径组件由点 (.) 字符分隔。 例如，符号名称可能是“myclass.member1”。 在此示例中，“member1”包含在“myclass”中。
+
+SymbolParent (symbol)
+
+返回给定符号的父代的符号记录。 符号的父级是包含它的符号。
+
+symbol 包含一条 Symbol 记录。 请参阅：符号记录。
+
+SymbolRootContainer (symbol)
+
+返回符号名称的根或最左边的组件。
+
+symbol 包含一条 Symbol 记录。 请参阅：符号记录。
+
+每个符号名称都分为路径组件，路径组件由点 (.) 字符分隔。 例如，符号名称可能是“myclass.member1”。 在此示例中，“member1”包含在“myclass”中。
+
+SymbolStructureType (symbol)
+
+返回给定符号的结构类型的符号记录。 结构类型是符号的结构或类类型，可以通过 typedef 间接引用。
+
+symbol 包含一条 Symbol 记录。 请参阅：符号记录。
 
 ### 搜索功能
 
+这些函数搜索对单词和模式的引用。
+
+GetSourceLink (hbufSource, lnSource)
+
+返回链接记录中源链接的目标。 源缓冲区是 hbufSource，源行号是 lnSource。 如果给定的行不包含源链接，则返回一个空字符串。 请参阅：链接记录。
+
+目标链接指向某个文件中某个行号的位置。 此源链接信息链接两个任意位置。 例如，搜索结果缓冲区包含与搜索模式匹配的每一行的源链接。
+
+LoadSearchPattern(pattern, fMatchCase, fRegExp,  fWholeWordsOnly)
+
+加载用于“搜索”、“向前搜索”和“向后搜索”命令的搜索模式。
+
+搜索模式字符串在模式中给出。
+
+如果是 fMatchCase，则搜索区分大小写。
+
+如果是 fRegExpr，则模式包含一个正则表达式。 否则，模式是一个简单的字符串。
+
+如果是 fWholeWordsOnly，那么只有整个单词才会匹配。
+
+ReplaceInBuf(hbuf, oldPattern, newPattern,  lnStart, lnLim, fMatchCase, fRegExp, fWholeWordsOnly, fConfirm)
+
+在给定的缓冲区中执行搜索和替换操作。
+
+搜索模式字符串在 oldPattern 中给出。
+
+替换模式字符串在 newPattern 中给出。
+
+行范围由 lnSart 到 lnLim 指定。 替换只发生在 lnStart 到 lnLim - 1 行。
+
+如果是 fMatchCase，则搜索区分大小写。
+
+如果是 fRegExpr，则模式包含一个正则表达式。 否则，模式是一个简单的字符串。
+
+如果是 fWholeWordsOnly，那么只有整个单词才会匹配。
+
+如果是 fConfirm，则在每次更换之前都会提示用户。
+
+SearchForRefs (hbuf, word, fTouchFiles)
+
+在整个项目中搜索对单词字符串的引用。 包含单词的每一行都附加到缓冲区 hbuf。 如果 fTouchFiles 为 TRUE，则每个包含 word 的文件都将其最后修改时间戳设置为当前时间。
+
+此功能类似于“查找引用”命令。 Word 可以包含多个单词，但如果是单个单词，此功能会快得多。
+
+此示例创建一个新的搜索结果文件并搜索引用。
+
+````
+macro LookupRefs (symbol)
+{
+   hbuf = NewBuf("Results") // create output buffer
+   if (hbuf == 0)
+      stop
+   SearchForRefs(hbuf, symbol, 0)
+   SetCurrentBuf(hbuf) // put buffer in a window
+}
+````
+
+SearchInBuf  (hbuf, pattern, lnStart, ichStart, fMatchCase, fRegExp, fWholeWordsOnly)
+
+在缓冲区 hbuf 中搜索模式。 搜索从行号 lnStart 和字符索引 ichFirst 开始。 SearchInBuf 返回跨越匹配文本的 Sel 记录。 如果未找到任何内容，则返回一个空字符串。 有关 Sel 记录的说明，请参阅 GetWndSel。
+
+如果是 fMatchCase，则搜索区分大小写。
+
+如果是 fRegExpr，则模式包含一个正则表达式。 否则，模式是一个简单的字符串。
+
+如果是 fWholeWordsOnly，那么只有整个单词才会匹配。
+
+SetSourceLink (hbufSource, lnSource,  target_file, lnTarget)
+
+SetSourceLink (hbufSource, lnSource, target_file, lnTarget)
+
+创建一个新的源链接。 链接源缓冲区是 hbufSource。 链接源行号是 lnSource。 链接目标文件在 target_file 中作为路径字符串给出。 链接目标行号是 lnTarget。
+
+如果成功则返回 True，否则返回 False。 Target_file 不必存在。 操作不会因为 target_file 不存在而失败。 此外，target_file 不需要打开。
+
+为获得一致的结果，target_file 应包含文件的完全限定路径名。 但是，您可以将一个简单的文件规范传递给此函数，它会根据当前项目中包含的文件和项目符号路径来扩展 target_file。
+
+当源缓冲区关闭或源代码行被删除时，源链接将被销毁。
+
 ### 项目功能
+
+项目功能允许您打开和关闭项目，并获取项目信息。
+
+AddConditionVariable(hprj, szName, szValue) 
+
+添加一个新的条件解析变量，用于在解析代码时评估条件语句，例如#if。
+
+Hprj 是项目的句柄。 如果 hprj 是 hNil，则将新变量添加到全局条件列表中。
+
+变量名在szName中给出，值在szValue中给出
+
+有两个条件列表：全局列表和项目特定列表。 当您打开一个项目时，这两个列表会合并，项目特定的列表优先于全局列表中的条目。
+
+请参阅：DeleteConditionVariable(hprj, szName) .. 请参阅：条件解析。
+
+AddFileToProj(hprj, filename)
+
+将给定的文件名添加到项目 hprj。
+
+CloseProj  (hprj)
+
+关闭项目 hprj。
+
+DeleteConditionVariable(hprj, szName) 
+
+删除一个新的条件解析变量，用于在解析代码时评估条件语句，例如#if。
+
+Hprj 是项目的句柄。 如果 hprj 是 hNil，则从全局条件列表中删除该变量。
+
+变量的名称在 szName 中给出。
+
+有两个条件列表：全局列表和项目特定列表。 当您打开一个项目时，这两个列表会合并，项目特定的列表优先于全局列表中的条目。
+
+请参阅：AddConditionVariable(hprj, szName, szValue) .. 请参阅：条件解析。
+
+DeleteProj  (proj_name)
+
+删除 proj_name 中命名的项目。 如果该项目当前处于打开状态，则会询问用户是否要先关闭它。 如果用户不关闭该项目，则不会删除该项目。
+
+EmptyProj  ()
+
+通过从项目中删除所有文件来清空项目。 实际文件本身不受影响。 成功则返回 True，错误则返回 False。
+
+GetCurrentProj ()
+
+返回当前打开项目的句柄 (hprj)。 Source Insight 一次只允许用户打开一个项目； 但是从宏语言来看，可以打开多个项目。
+
+GetProjDir  (hprj)
+
+返回项目 hprj 的源目录路径。
+
+GetProjFileCount (hprj)
+
+返回添加到项目 hprj 的文件数。
+
+GetProjFileName (hprj, ifile)
+
+返回与项目 hprj 中的索引 ifile 关联的项目文件的名称。
+
+每个项目都有一个项目文件索引，按文件名排序。 GetProjFileName 将索引映射到文件名。 文件索引值从零开始，一直到 GetProjFileCount 返回的计数。
+
+此示例遍历所有项目文件：
+
+````
+ifileMax = GetProjFileCount (hprj)
+ifile = 0
+while (ifile < ifileMax)
+   {
+   filename = GetProjFileName (hprj, ifile)
+   ..
+   ifile = ifile + 1
+   }
+````
+
+GetProjName  (hprj)
+
+返回项目 hprj 的名称。 该名称包含项目文件的完整路径。
+
+GetProjSymCount (hprj)
+
+返回项目 hprj 中的符号数。
+
+GetProjSymLocation (hprj, isym)
+
+返回符号记录中与项目 hprj 中的索引 isym 关联的符号的符号位置信息。 请参阅：符号记录。
+
+每个项目都有一个符号索引，按符号名称排序。 GetProjSymLocation 将索引映射到符号符号记录。 符号索引值从零开始，一直到 GetProjSymCount 返回的计数。
+
+您可以调用 JumpToLocation 移动到 GetProjSymLocation 返回的 Symbol 记录。
+
+有关符号记录的更多信息，请参阅 GetSymbolLocation。
+
+GetProjSymName (hprj, isym)
+
+返回项目 hprj 中与索引 isym 关联的符号的名称。
+
+每个项目都有一个符号索引，按符号名称排序。 GetProjSymName 将索引映射到符号名称。 符号索引值从零开始，直到 GetProjSymCount 返回的计数减一。
+
+此示例遍历所有项目符号：
+
+````
+isymMax = GetProjSymCount (hprj)
+isym = 0
+while (isym < isymMax)
+   {
+   symname = GetProjSymName (hprj, isym)
+   ..
+   isym = isym + 1
+   }
+````
+
+NewProj  (proj_name)
+
+创建一个新项目并返回项目句柄 (hprj)，如果出错则返回 hNil。
+
+OpenProj  (proj_name)
+
+打开名为 proj_name 的项目并返回项目句柄 (hprj)，如果出错则返回 hNil。
+
+RemoveFileFromProj(hprj, filename)
+
+从项目 hprj 中删除给定的文件名。 磁盘上的文件不会被更改或删除。
+
+SyncProj  (hprj)
+
+同步项目 hprj。 检查项目中的所有文件是否有外部更改，并且 Source Insight 的符号数据库会针对已更改的文件进行增量更新。
+
+SyncProjEx(hprj, fAddNewFiles, fForceAll,  fSupressWarnings)
+
+同步项目 hprj。 检查项目中的所有文件是否有外部更改，并且 Source Insight 的符号数据库会针对已更改的文件进行增量更新。
+
+如果 fAddNewFiles 为 True，新文件将自动添加到项目中。 仅添加与“文档选项”命令中定义的文档类型相匹配的文件名。
+
+如果为 fForceAll，则项目中的每个文件都会重新同步，而不管其时间戳。
+
+如果设置为 fSuppressWarnings，则 Source Insight 在打开文件时出错时不会发出警告。
 
 ### 杂项宏函数
 
+这些功能不能完全归入其他类别，但很有用。
+
+DumpMacroState (hbufOutput)
+
+此函数将描述正在运行的宏的当前状态的文本附加到缓冲区 hbufOutput。 宏状态由所有变量的值和执行堆栈组成。 这个函数在调试宏时很有用。
+
+GetProgramEnvironmentInfo ()
+
+返回 ProgEnvInfo 记录，其中包含有关 Source Insight 运行环境的信息。 请参阅：ProgEnvInfo 记录。
+
+GetProgramInfo ()
+
+返回一个 ProgInfo 结构，其中包含有关 Source Insight 的信息。 请参阅：ProgInfo 记录。
+
 ### 有关宏的其他信息
 
+调试
+Source Insight 不包含宏调试器。 然而，由于宏是被解释的，您可以通过在代码中的关键点使用“Msg”函数来输出字符串和变量值来轻松弄清楚发生了什么。 请参阅：消息 (s)。
+
+要在当前光标位置开始执行宏语句，请使用运行宏。 只需将插入点放在要开始运行的行上，然后调用“运行宏”命令。
+
+您可以通过调用 DumpMacroState 函数转储正在运行的宏的执行堆栈和变量状态。 请参阅：DumpMacroState (hbufOutput)。
+
+坚持
+
+全局变量在运行之间保留，但在会话之间不保留。 局部变量不会在运行或会话之间保留。 但是，您可以通过将值存储在文件中或写入和读取注册表项来保留这些值。
+
+无自修改宏
+
+确保宏在运行时不会修改自身。 Source Insight 将中止任何试图编辑包含正在运行的宏的文件的宏。
+
+示例宏
+
+Source Insight 中包含一个名为“utils.em”的宏文件。 该文件包含一些有用的函数，您可能想查看它以查看一些示例。
+
+事件处理器
+
+事件处理程序是用 Source Insight 的宏语言编写的函数，在特定事件发生时被调用。 有关更多信息，请参阅宏事件处理程序。
+
 ## 六、宏事件处理
+
+本章介绍用 Source Insight 宏语言编写的事件处理函数。 事件处理程序是在特定事件发生时调用的函数。 本章假定您熟悉宏语言规则和语法。
+
+宏事件处理程序
+
+事件处理程序是用 Source Insight 的宏语言编写的函数，在特定事件发生时被调用。 您可以使用 event 关键字来定义函数，而不是使用 macro 或 function 关键字。 例如：
+
+````
+event ProjectOpen(sFile)
+{
+}
+````
+
+事件处理程序函数不返回值。 它们不能用于中止事件或向程序返回值。 还要注意事件函数参数的拼写。 它们必须拼写正确。
+
+事件处理程序名称
+
+事件处理程序名称及其函数参数是预定义的。 您的事件处理程序必须使用函数名称和参数的准确拼写。
+
+以下是 Source Insight 支持的事件：
+
+应用事件
+
+````
+event AppStart()
+event AppShutdown()
+event AppCommand(sCommand)
+````
+
+文档事件
+
+````
+event DocumentNew(sFile)
+event DocumentOpen(sFile)
+event DocumentClose(sFile)
+event DocumentSave(sFile)
+event DocumentSaveComplete(sFile)
+event DocumentChanged(sFile)
+event DocumentSelectionChanged(sFile)
+````
+
+项目事件
+
+````
+event ProjectOpen(sProject)
+event ProjectClose(sProject)
+````
+
+状态栏事件
+
+````
+event StatusbarUpdate(sMessage)
+````
+
+事件处理程序使用
+
+您可以为很多事情使用事件处理程序，但有一些想法是：
+
+* 监视和记录活动。 例如，您可以将操作记录到日志文件中，然后使用该信息来分析项目的哪些部分已被编辑。
+* 将另一个程序或文件与 Source Insight 中的操作同步。
+* 改变 Source Insight 的工作方式。
+* 在保存文件之前执行文件的后处理。
+* 执行新文件的预处理。
+
+### 将事件处理程序添加到 Source Insight
+
+事件处理程序存储在宏源文件中。 也就是说，它们具有 .em 扩展名。 您可以在同一个文件中混合使用事件和宏函数。 编写事件处理程序后，应将其添加到当前项目中。 如果您希望无论项目如何处理事件，都可以将其添加到 Base 项目中。 如果 Source Insight 找不到给定的事件处理程序，它将被忽略。 Source Insight 在您的项目、项目符号路径和 Base 项目中搜索。
+
+请务必记住，您必须将 .em 文件添加到项目中，否则 Source Insight 将不会调用该文件中的事件处理程序。 这是为了防止事件处理程序仅通过打开其中包含事件函数的 .em 文件而意外运行。
+
+**启用事件处理程序**
+
+您必须在使用事件处理程序之前启用它们。 出于安全原因，默认情况下禁用它们。 要启用事件处理程序，请选择选项 > 首选项并单击常规选项卡。 然后，选中“启用事件处理程序”框。 启用事件处理程序后，该选项将被保存，因此您不必再次执行此操作。
+
+还有一个名为 Enable Event Handlers 的用户级命令，可以分配给菜单或击键。
+
+>  出于安全原因，您不能从宏运行启用事件处理程序命令。
+
+编辑事件处理程序文件
+
+Source Insight 将忽略任何已修改和未保存的文件中的事件处理程序。 因此，如果您正在编辑事件处理程序源文件，Source Insight 将不会在您编辑它时尝试执行处理程序！ 完成编辑后，保存文件。 保存文件时，Source Insight 将再次执行处理程序。
+
+事件处理程序中的错误
+
+如果事件处理程序导致语法错误或运行时错误，则在 Source Insight 会话的其余部分禁用所有事件处理程序。 您将看到“宏错误”警告消息。 要再次启用事件处理程序，您必须重新启动 Source Insight。
+
+同步 VS 异步事件
+
+一些事件处理程序在事件发生时立即被调用。 这些被称为“同步”事件。一个例子是 DocumentNew。一旦用户创建新文档（文件缓冲区），它就会被调用。
+
+但是，有些事件会在事件发生后不久被调用，通常是在短暂的空闲时间之后。 这些被称为“异步”事件。它们是异步的，因为如果在事件发生的确切时间调用用户编写的宏，它会破坏 Source Insight 的稳定性。
+
+事件处理程序的有用提示
+
+最好将所有事件处理程序放在一个文件中，或者放在少量文件中，名称如“event-something.em”。 这样，您就可以轻松地从项目中删除这些文件，从而有效地关闭处理程序。
+
+全局变量对于添加计数器和维护事件之间的状态很有用。 请参阅：全局变量。
+
+### 应用事件
+
+应用程序事件作为一个整体应用于 Source Insight 应用程序。
+
+event AppStart()
+
+在 Source Insight 应用程序加载和初始化后调用。 当前项目和工作区会话已加载。
+
+event  AppShutdown()
+
+在 Source Insight 应用程序退出之前调用。
+
+event  AppCommand(sCommand)
+
+在给定的用户级命令执行后立即调用。
+
+### 文档事件
+
+文档事件适用于打开、关闭、保存或修改文件缓冲区的时间。
+
+event  DocumentNew(sFile)
+
+在创建给定的文件缓冲区后立即调用。 文件名为 sFile。
+
+event  DocumentOpen(sFile)
+
+在打开文件缓冲区后立即调用。 文件名为 sFile。
+
+event  DocumentClose(sFile)
+
+在文件缓冲区关闭后立即调用。 文件名为 sFile。
+
+event DocumentSave(sFile)
+
+就在保存文件缓冲区之前填充。 文件名为 sFile。 您可以在保存之前对文件缓冲区进行编辑。 如果你想在文件保存后做一些事情，那么你可以使用 DocumentSaveComplete 事件。
+
+event DocumentSaveComplete(sFile)
+
+在保存文件缓冲区后立即调用。 文件名为 sFile。 如果您想在保存文件之前获得控制权，那么您可以使用 DocumentSave 事件。
+
+event  DocumentChanged(sFile)
+
+当用户编辑文件缓冲区时调用。 文件名为 sFile。 此事件是异步处理的。 也就是说，它不会在用户键入时被调用。 它是在闲置片刻后调用的。 这允许您编辑此事件处理程序中的文件。 注意因为这个函数是异步调用的，所以有可能sFile文件没有打开，所以需要测试GetBufHandle(sFile)的返回值，确保它不是hNil。
+
+event  DocumentSelectionChanged(sFile)
+
+当用户选择文本或在当前文件中移动光标时调用。 文件名为 sFile。 此事件是异步处理的。 也就是说，当用户移动光标时它不会被调用。 它是在闲置片刻后调用的。 注意因为这个函数是异步调用的，所以有可能sFile文件没有打开，所以需要测试GetBufHandle(sFile)的返回值，确保它不是hNil。
+
+### 项目事件
+
+项目事件适用于打开和关闭 Source Insight 项目。
+
+event  ProjectOpen(sProject)
+
+项目打开后调用。
+
+event ProjectClose(sProject)
+
+在项目关闭之前调用。
+
+### 状态栏事件
+
+event  StatusbarUpdate(sMessage)
+
+当状态栏的内容改变时调用。 此事件是异步处理的。 也就是说，它不会在状态栏更改的那一刻被调用。 它是在闲置片刻后调用的。 这允许您编辑此事件处理程序中的文件。
