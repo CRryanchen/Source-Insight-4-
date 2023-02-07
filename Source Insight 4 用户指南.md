@@ -3889,97 +3889,657 @@ Source Insight 还允许您定义自定义命令，这对于从 Source Insight �
 
 打开并激活项目搜索栏，它显示在主应用程序窗口顶部附近。
 
-#### <span id = "Activate Project Symbol List">Activate Project Symbol List</span>
+#### <span id = "Activate Project Symbol List">Activate Project Symbol List</span>(激活项目符号列表)
 
-#### <span id = "Activate Project Window">Activate Project Window</span>
+此命令使项目符号列表面板可见； 在列表中显示所有项目符号，并将光标放在顶部的文本框中。 激活后，您可以在文本框中输入内容，符号列表将根据您输入的内容进行过滤。 按 Enter 或 Esc 将再次重新激活源文件窗口。
 
-#### <span id = "Activate Relation Window">Activate Relation Window</span>
+这是导航到项目中的函数或符号的快速方法。
 
-#### <span id = "Activate Search Bar">Activate Search Bar</span>
+请参阅：[项目符号列表](#Project Symbol List)。
 
-#### <span id = "Activate Search Results">Activate Search Results</span>
+#### <span id = "Activate Project Window">Activate Project Window</span>(激活项目窗口)
 
-#### <span id = "Activate Snippet Window">Activate Snippet Window</span>
+打开并激活项目窗口。 项目窗口通常包含多个选项卡式面板。 最后一个处于活动状态的选项卡将再次处于活动状态。
 
-#### <span id = "Activate Symbol Window">Activate Symbol Window</span>
+#### <span id = "Activate Relation Window">Activate Relation Window</span>(激活关系窗口)
 
-#### <span id = "Activate Window List">Activate Window List</span>
+打开并选择关系窗口。 输入焦点移动到关系窗口。
 
-#### <span id = "Add  and Remove Project Files">Add  and Remove Project Files</span>
+请参阅：[关系窗口](#Relation Window)。
 
-#### <span id = "Add  File">Add  File</span>
+#### <span id = "Activate Search Bar">Activate Search Bar</span>(激活搜索栏)
 
-#### <span id = "Add File List">Add File List</span>
+打开并激活显示在源窗口区域上方的文件搜索栏。 搜索栏可让您在当前文件中进行搜索。
 
-#### <span id = "Advanced Options ">Advanced Options </span>
+#### <span id = "Activate Search Results">Activate Search Results</span>(激活搜索结果)
 
-#### <span id = "Arrange Windows">Arrange Windows</span>
+此命令只是激活“搜索结果”窗口并将其置于最前面（如果它是打开的）。 这提供了一种快速返回搜索结果的方法。
 
-#### <span id = "Arrangement Toolbar">Arrangement Toolbar</span>
+#### <span id = "Activate Snippet Window">Activate Snippet Window</span>(激活片段窗口)
 
-#### <span id = "Back  Tab">Back  Tab</span>
+打开并激活代码片段面板。
 
-#### <span id = "Backspace">Backspace</span>
+#### <span id = "Activate Symbol Window">Activate Symbol Window</span>(激活符号窗口)
+
+此命令使符号窗口可见并将光标放在顶部的文本框中。 激活后，您可以在文本框中输入内容，符号列表将根据您输入的内容进行过滤。 按 Enter 或 Esc 将再次重新激活源文件窗口。
+
+请参阅：[符号窗口命令](Symbol Window command)。
+
+#### <span id = "Activate Window List">Activate Window List</span>(激活窗口列表)
+
+打开并激活显示所有开源文件的窗口列表面板。
+
+#### <span id = "Add  and Remove Project Files">Add  and Remove Project Files</span>(添加和删除项目文件)
+
+此命令允许您将源文件添加到当前项目，或从当前项目中删除源文件。
+
+这是向项目添加大量文件的主要方式。 使用此命令，您可以添加和删除单个文件、文件组和整个源目录树。
+
+> 您还可以通过将文件从 Windows 资源管理器拖放到项目文件列表面板上来将文件添加到项目中。 项目文件列表面板还允许从项目中删除文件。
+
+##### 您应该将哪些文件添加到项目中？
+
+> 仅将文本文件添加到您的项目中。
+
+Source Insight 项目应该只包含程序源文件和文本文件。 将二进制格式文件添加到 Source Insight 项目没有任何意义。 例如，将 exe 或位图文件添加到您的项目中不会有任何好处。
+
+选项 > 文件类型选项中默认定义的文件类型对应于您可能希望与 Source Insight 一起使用的源文件类型。 通常，只有那些类型的文件应该添加到项目中。
+
+> 使用选项 > 文件类型选项来控制添加到项目的文件类型。
+
+文件类型选项对话框包含复选框：添加到项目时包括。 您可以使用此复选框来控制 Source Insight 自动将哪些文件类型添加到您的项目中，或者在“添加和删除项目文件”对话框的列表框中显示哪些文件类型。
+
+##### 使用主文件列表
+
+您可以设置一个称为主文件列表的特殊文件并将其与当前项目相关联，而不是通过“添加和删除项目文件”命令手动添加和删除文件。 有关详细信息，请参阅：使用主文件列表。
+
+##### 添加和删除项目文件对话框
+
+![image-20230207220148549](https://ryan-typora.oss-cn-chengdu.aliyuncs.com/img/202302072201645.png)
+
+文件名
+
+在此文本框中键入要添加或删除的文件的名称。 列表将自动与您键入的内容相匹配。 您可以键入通配符并按 Enter 来筛选文件列表以仅显示与通配符匹配的文件。
+
+您还可以键入完整的目录路径，或键入一个驱动器号后跟一个冒号来切换当前目录。
+
+目录列表
+
+包含当前驱动器的目录树。 如果您在此列表框中选择目录名称，文件名列表将显示该目录中的内容。 当前工作目录和通配符过滤器（如果有）显示在列表框上方。
+
+文件名列表
+
+包含当前所选目录中所有文件的列表。 如果从此列表框中选择一个文件，文件名将加载到文件名文本框中。 此列表框不会显示已属于项目的文件。
+
+项目文件列表
+
+列出当前添加到项目中的所有文件。 您可以从此列表中选择文件并单击删除...按钮以从项目中删除文件。
+
+关闭
+
+关闭对话框，保留所做的更改。
+
+添加
+
+将选定的文件添加到项目中。 如果选择了目录，则当前目录切换到该目录。
+
+全部添加
+
+选择“文件名”列表中的所有项目并将它们添加到项目中。 如果包含任何目录，那么它们的内容也会被添加。 Source Insight 将首先提示您查看是否要包含目录。
+
+添加树
+
+单击添加树将整个源代码树添加到您的项目中。
+
+选择目录后，会将整个目录树添加到项目中。 也就是说，扫描子树中的所有目录以查找与已知文件类型匹配的文件，并将它们添加到项目中。
+
+删除树
+
+选择目录后，这将删除在该目录树中找到的所有文件。
+
+仅显示已知文件类型
+
+只有在选项 > 文件类型选项中定义的文件才会包含在文件列表中。 此外，仅包含启用了“添加到项目时包含”选项的文件类型。 您可以使用文件类型选项命令更改已知文件类型。
+
+如果未启用，则所有文件类型都列在“文件名”列表中。 您应该只将文本文件添加到项目中，而不是二进制文件。
+
+删除文件
+
+删除在“项目文件”列表中选择的文件。
+
+移除所有
+
+从项目中删除所有文件。 该项目将为空。
+
+删除特殊...
+
+弹出删除文件对话框，允许您执行特殊的删除操作，例如删除所有 *.h 文件。
+
+从列表中添加...
+
+调出添加文件列表对话框。 这要求您指定一个输入文本文件，其中包含要添加到项目中的文件和目录列表。
+
+#### <span id = "Add  File">Add  File</span>(添加文件)
+
+添加文件命令将一个或多个源文件添加到当前项目。 此命令存在于早期版本的 Source Insight 中，但是添加和删除项目文件命令是更新的替代命令，它提供了一个中央对话框，可以从中添加和删除项目中的文件。
+
+文件名
+
+要添加到项目中的文件的名称。 您可以键入文件名或通配符模式，然后按 Enter。 如果键入通配符，该模式将应用于文件列表框。
+
+文件列表框
+
+包含当前驱动器的当前工作目录中尚未属于当前项目的所有文件的列表。 如果从此列表框中选择一个文件，文件名将加载到文件名文本框中。 当前工作目录显示在列表框上方。 此列表框不会显示已属于项目的文件。 此外，只有属于打开了“添加到项目时包括”选项的文件类型的文件才会包含在列表中。 请参阅：文件类型选项。
+
+添加
+
+单击此按钮可将文件名文本框中命名的文件添加到项目中并关闭对话框。 如果“文件名”文本框中包含通配符，则通配符将展开显示在“文件”列表框中，并且不会关闭对话框。 如果在文件列表框中选择了一个或多个文件，则所有选定的文件都将添加到项目中。
+
+全选
+
+单击此按钮可选择文件列表框中包含的所有文件。
+
+添加目录
+
+单击此按钮可将整个目录添加到项目中。 如果启用了 Subdirs Also 复选框，那么这将递归地添加整个子目录树中的所有文件。
+
+显示目录
+
+单击此按钮可在显示文件名和显示子目录名之间切换列表框内容。
+
+子目录也
+
+如果启用，则在单击“添加”按钮时，或者在选择单个目录并单击“添加”时，Source Insight 将遍历所有子目录。
+
+如果未启用，则 Source Insight 将仅添加所选文件或所选目录中的文件，而忽略子目录。
+
+浏览
+
+单击此按钮可打开标准的 Windows 打开对话框，您可以在其中浏览磁盘。 如果您在此对话框中选择一个文件，其路径将被放入文件名文本框中。
+
+移除
+
+单击此按钮可切换到删除文件对话框。
+
+#### <span id = "Add File List">Add File List</span>(添加文件列表)
+
+添加文件列表命令允许您将输入文件中指定的文件名和目录添加到当前项目。
+
+这是让您或项目管理员维护源文件和/或源目录列表的有用方法，可用于构建 Source Insight 项目。 这可以代替手动添加文件来完成。
+
+#### <span id = "Advanced Options ">Advanced Options </span>(高级选项)
+
+这允许您有选择地禁用 Source Insight 中的内部优化。 这有助于缩小可能的错误范围。 如果您报告错误，系统可能会要求您在“高级选项”对话框中进行更改以帮助解决问题。 通常，您不需要使用此功能。
+
+#### <span id = "Arrange Windows">Arrange Windows</span>(排列窗户)
+
+在多文档区域内平铺和排列源文件窗口。
+
+#### <span id = "Arrangement Toolbar">Arrangement Toolbar</span>(编排工具栏)
+
+显示或隐藏窗口排列工具栏。
+
+#### <span id = "Back  Tab">Back  Tab</span>(返回选项卡)
+
+Back Tab 命令将光标向左移动一个制表位。
+
+#### <span id = "Backspace">Backspace</span>(退格键)
+
+Backspace 命令将字符后退到插入点的左侧。 如果选择被扩展，选择中的文本将被删除。
 
 #### <span id = "Beginning of Line">Beginning of Line</span>
 
+行首命令将插入点移动到当前行的开头。
+
 #### <span id = "Beginning of Selection">Beginning of Selection</span>
+
+选区开始命令将插入点移动到当前选区的开头（如果它已扩展）。 如果所选内容已经是插入点，则什么也不会发生。
 
 #### <span id = "Blank Line Down">Blank Line Down</span>
 
+Blank Line Down 命令将插入点移动到下一个空白行的开头。
+
 #### <span id = "Blank  Line Up">Blank  Line Up</span>
+
+Blank Line Up 命令将插入点移动到上一个空白行的开头。
 
 #### <span id = "Block  Down">Block  Down</span>
 
+Block Down 命令将插入点移动到下一个 } 大括号。 这对应于 C/C++ 和 Java 等语言中当前代码块的结尾。
+
 #### <span id = "Block  Up">Block  Up</span>
+
+Block Up 命令将插入点移动到前一个 { 大括号。 这对应于 C/C++ 和 Java 等语言中当前代码块的开头。
 
 #### <span id = "Bookmark">Bookmark</span>
 
+书签命令激活书签面板。 书签可用于存储文件中感兴趣的位置。
+
+请参阅：[书签](#Bookmarks)。
+
 #### <span id = "Bookmark  Window">Bookmark  Window</span>
+
+书签窗口命令显示和隐藏书签窗口面板。 书签面板是一个浮动的、可停靠的窗口，显示当前的书签列表。
+
+请参阅：[书签](#Bookmarks)。
+
+![image-20230207221122334](https://ryan-typora.oss-cn-chengdu.aliyuncs.com/img/202302072211413.png)
+
+Text Field
+
+在此处键入书签的部分名称或行号。 Source Insight 会检查您键入的标记是否与现有书签名称相匹配。 如果是，则按 Enter 会将您定位到该标记。 如果您刚刚键入的书签不存在，则按 Enter 将创建一个新书签。
+
+Marks list
+
+显示当前设置的所有书签的列表。 列表中的每一项都显示了书签的名称、所在的文件、所在的行号以及包含书签的函数（如果有的话）。
+
+在列表上右击鼠标可以看到书签菜单。
+
+Add (Ctrl+N)
+
+单击此按钮可创建新书签。 标记的名称取自名称文本框。 如果书签名称已经在列表中（即它已经存在），那么它的位置将被重新定义为当前光标位置。
+
+Delete (Ctrl-X)
+
+单击此按钮可删除选定的标记。 要删除所有书签，请右键单击列表并选择“删除所有书签”。
+
+Go To (press Enter)
+
+单击此按钮可跳转到在“标记”列表中选择的标记。
+
+Load Bookmarks (Ctrl-O)
+
+单击此按钮可从另一个书签文件导入书签。
+
+Save Bookmarks (Ctrl-S)
+
+单击此按钮可将选定的书签保存到新的书签文件中。
+
+Bookmark Options... (Ctrl-Q)
+
+单击此按钮可编辑书签选项。 请参阅：[书签选项](#Bookmark Options )
 
 #### <span id = "Bookmark Options">Bookmark Options</span>
 
+书签选项命令设置处理书签的选项。
+
+![image-20230207221357138](https://ryan-typora.oss-cn-chengdu.aliyuncs.com/img/202302072213215.png)
+
+Preserve bookmarks between sessions(在会话之间保留书签)
+
+如果选中此框，则在退出并重新启动 Source Insight 时会恢复书签。 否则，当您退出 Source Insight 时，所有书签都会消失。
+
+Delete bookmarks when file closes(文件关闭时删除书签)
+
+如果选中此框，则当您关闭该文件时，该文件中的所有书签都会被删除。
+
+Confirm when deleting bookmarks(删除书签时确认)
+
+如果启用，您将在书签面板中删除书签之前收到提示。
+
+Font & Color...(字体颜色)
+
+单击此选项可以选择书签面板中使用的字体以及前景色和背景色。
+
 #### <span id = "Bottom of File">Bottom of File</span>
+
+Bottom of File 命令在当前文件的最后一行创建一个插入点。
 
 #### <span id = "Bottom of Window">Bottom of Window</span>
 
+窗口底部命令在活动窗口的最后可见行处创建一个插入点。
+
 #### <span id = "Browse  Files">Browse  Files</span>
 
-#### <span id = "Browse Project Symbols">Browse Project Symbols</span>
+Browse Files 命令调出标准的Windows 系统打开文件对话框，以便您可以浏览常规文件系统并打开任何文件。 这与常规的 Source Insight Open 命令不同，它会打开项目窗口，它只列出当前项目中的文件，而不考虑目录。
 
-#### <span id = "Browse Global Symbols Dialog box">Browse Global Symbols Dialog box</span>
+#### <span id = "Browse Project Symbols">Browse Project Symbols</span>(浏览项目符号)
 
-#### <span id = "Browse Local File Symbols">Browse Local File Symbols</span>
+列出当前项目中的所有符号。 从此对话框中，您可以
 
-#### <span id = "Browser Mode">Browser Mode</span>
+* 根据名称的一部分查找符号。
+* 查看符号定义。
+* 跳转到符号定义。
+* 在源文件中插入对函数的调用。
+* 生成交叉引用列表。
 
-#### <span id = "Calculate">Calculate</span>
+“浏览项目符号”命令会在对话框出现之前自动选择所选内容中的第一个单词。 该词也加载到对话框的符号名称文本框中。 该词被选中，以便您可以使用插入按钮替换符号名称。
 
-#### <span id = "Cascade Windows">Cascade Windows</span>
+> 您可以使用项目窗口的符号列表视图，而不是使用此模态对话框。 项目窗口是无模式的； 它可以浮动或停靠在应用程序窗口的一侧。 此外，上下文窗口显示您在项目窗口符号列表中选择的项目的声明。
 
-#### <span id = "Check for Updates">Check for Updates</span>
+#### <span id = "Browse Global Symbols Dialog box">Browse Global Symbols Dialog box</span>(浏览全局符号对话框)
 
-#### <span id = "Checkpoint">Checkpoint</span>
+Symbol List
 
-#### <span id = "Checkpoint All">Checkpoint All</span>
+此列表显示项目中所有符号的列表。 如果在符号名称文本框中给出了搜索模式，那么这是满足搜索模式的所有符号的列表。 在符号列表下方，显示当前选择的符号的类型和源文件。
 
-#### <span id = "Clear Highlights">Clear Highlights</span>
+列表中的符号类型由使用符号类型按钮访问的设置控制。
 
-#### <span id = "Clip Properties">Clip Properties</span>
+在您键入时，Source Insight 将在符号列表中显示部分匹配项。 例如，如果您键入“Pch”，则列表中以“Pch”开头的第一项（按排序顺序）将在列表中被选中。 匹配不区分大小写，前导下划线将被忽略。
 
-#### <span id = "Clip Window">Clip Window</span>
+如果您启用了符号名称片段匹配（在首选项：键入中），则符号列表还将显示名称片段的匹配项，您可以按任何顺序键入这些名称片段。 例如，如果您键入“cre win”（注意项目之间的空格），符号列表将显示名称中某处包含“Cre”和“Win”的所有符号。
 
-#### <span id = "Clip Window Options">Clip Window Options</span>
+要临时打开和关闭名称片段匹配，请在您的条目前加上一个空格字符。
 
-#### <span id = "Close">Close</span>
+> 您可以使用正则表达式搜索符号，方法是在您的模式前加上问号 (?)。
 
-#### <span id = "Close  All">Close  All</span>
+您可以通过输入问号 (?) 和搜索模式来指定正则表达式样式搜索模式来搜索符号，然后单击跳转按钮。 所有与模式匹配的符号都放在符号列表中。 例如，要查找所有以“Delete”开头并包含“Foo”的符号，您可以键入“?^Delete.*Foo”。
 
-#### <span id = "Close  Project">Close  Project</span>
+Jump 
 
-#### <span id = "Close Window">Close Window</span>
+单击此按钮可跳转到当前所选符号的定义。 如果在符号列表中选择了一个项目，那么它就是当前符号。 否则，将使用在符号名称文本框中键入的符号。
 
-#### <span id = "Color Options">Color Options</span>
+如果符号名称文本框以问号 (?) 开头，则 Source Insight 会将列表替换为与问号后面的搜索模式匹配的所有符号； 对话框将保持打开状态。
+
+Info
+
+单击此按钮可对所选符号运行符号信息命令。
+
+References
+
+单击此按钮可搜索对所选符号的引用。
+
+Insert w/Args
+
+单击此按钮可将当前选择替换为符号名称，如果符号是函数，则后跟出现在符号定义中的参数。
+
+Insert Name
+
+单击此按钮可将当前选择替换为符号名称。
+
+List
+
+单击此按钮可创建符号列表中当前列出的符号的交叉引用列表。 一个新文件被创建并命名为 Symlist.txt。 文件的每一行都包含一个符号名称，以及定义它的文件和行号。
+
+Symbol Types
+
+该按钮用于指定在符号名称文本框中使用正则表达式时将在符号列表中包含哪些类型的符号以及将搜索哪些类型的符号。
+
+Making a Cross Reference Listing
+
+您可以让 Source Insight 创建一个包含符号名称列表的输出文件。
+
+To create a symbol cross reference list
+
+1. 运行浏览项目符号命令。
+2. 单击列表按钮。 将创建一个名为 Symlist.txt 的新文件，其中包含符号列表中显示的所有符号的列表，以及找到该符号的文件和行号。
+
+To create a partial symbol cross reference list
+
+1. 运行浏览项目符号命令。
+2. 单击“符号类型”按钮以指定要出现在列表中的所需符号类型。
+3. 在符号名称文本框中键入搜索表达式。 您必须以 ? 字符来表示它是一个模式。 例如，“?Word”搜索所有包含子字符串“Word”的符号。
+4. 单击跳转按钮，将列表内容替换为所有与模式匹配的符号。 搜索完成后，所有匹配的符号将出现在符号列表框中。
+5. 单击列表按钮创建符号列表。
+6. 修正函数调用中的参数以使其适当。
+
+To Search for a Function by Name
+
+假设您想调用一个函数但不记得它的名字。 您知道它的名称中有“Insert”和“Char”。 本示例假设您在创建项目时启用了符号名称片段匹配。
+
+1. 在文件中选择要插入函数调用的位置。
+2. 运行浏览项目符号命令。
+3. 在文件名文本框中键入“Insert Char”并稍等片刻。 注意两个词之间的空格。 Source Insight 将使用您键入的名称片段来过滤符号列表，以显示名称中包含 Insert 和 Char 的所有符号。 此技术仅在您键入的每个单词都以大写字母开头时才有效。
+
+#### <span id = "Browse Local File Symbols">Browse Local File Symbols</span>(浏览本地文件符号)
+
+浏览本地文件符号命令列出当前文件中文件范围内的所有符号。 从此对话框中，您可以查看符号定义、跳转到符号或将符号定义的副本插入当前选择。
+
+浏览本地文件符号命令会在对话框出现之前自动选择所选内容中的第一个单词。 该词被选中，以便您可以使用插入按钮替换符号名称。
+
+Symbol
+
+要查找的符号的名称。 当对话框出现时，此文本框会自动加载当前选择中的第一个单词。 您可以在此文本框中键入任何符号名称。
+
+Symbol List
+
+显示项目中所有符号的列表。 如果在符号名称文本框中给出了搜索模式，那么这是满足搜索模式的所有符号的列表。 在符号列表下方，显示当前选择的符号的类型和源文件。
+
+列表中显示的符号类型由使用符号类型按钮访问的设置控制。
+
+在您键入时，Source Insight 将在符号列表中选择以您键入的内容开头的符号。 例如，如果您键入“Pch”，则列表中以“Pch”开头的第一项（按排序顺序）将在列表中被选中。 匹配不区分大小写，前导下划线将被忽略。
+
+您可以通过键入问号 (?) 和搜索模式来指定正则表达式样式搜索模式来搜索符号，然后单击跳转按钮。 所有与模式匹配的符号都放在符号列表中。 例如，要查找所有以“Delete”开头并包含“Foo”的符号，您可以键入“?^Delete.*Foo”。
+
+Jump
+
+单击可跳转到当前所选符号的定义。 如果在符号列表中选择了一个项目，则该项目就是选定的符号。 否则，将使用在符号名称文本框中键入的符号。
+
+如果符号名称文本框以问号 (?) 开头，则 Source Insight 将执行搜索，并且对话框将保持打开状态。
+
+Info
+
+单击以对所选符号运行符号信息命令。
+
+References
+
+单击以搜索对所选符号的引用。
+
+Insert w/Args
+
+单击以将当前选择替换为符号名称，后跟参数，因为它们出现在符号定义中。
+
+Insert Name
+
+单击以用符号名称替换当前选择。
+
+List
+
+单击以创建符号列表中当前列出的符号的交叉引用列表。 一个新文件被创建并命名为 SYMLIST.TXT。 文件的每一行都包含一个符号名称以及定义它的文件和行号。
+
+Symbol Types
+
+该按钮用于指定在符号名称文本框中使用正则表达式时将在符号列表中包含哪些类型的符号以及将搜索哪些类型的符号。
+
+#### <span id = "Browser Mode">Browser Mode</span>(浏览器模式)
+
+浏览器模式命令切换 Source Insight 的浏览器模式。 当浏览器模式打开时，您的源代码变为只读，并像网络浏览器一样运行。 例如，单击函数调用中的函数名称将跳转到函数的定义。
+
+您还可以通过右键单击 Source Insight 应用程序窗口右下角的小框来切换浏览器模式。 然后从弹出菜单中选择启用/禁用浏览模式
+
+<center>表 4.1：浏览器模式键盘命令</center>
+
+| Key or Mouse click     | Action                             |
+| ---------------------- | ---------------------------------- |
+| Backspace              | 导航回到之前的位置                 |
+| Space                  | 跳转到光标下符号的定义             |
+| Hold down CTRL         | 允许您拖出文本选择而不是跳转到定义 |
+| Click on a symbol name | 跳转到符号的定义                   |
+
+#### <span id = "Calculate">Calculate</span>(计算)
+
+这将用其结果替换选定的数学表达式。 要使用此命令，首先选择某种数学表达式的文本。 例如 112*14。 调用计算命令来求解表达式并插入答案。 在这种情况下，1568。
+
+#### <span id = "Cascade Windows">Cascade Windows</span>(级联窗口)
+
+Cascade Windows 命令通过在屏幕上层叠窗口来重新排列窗口。
+
+#### <span id = "Check for Updates">Check for Updates</span>(检查更新)
+
+检查 Source Insight 服务器以查看是否有可用的更新版本。
+
+#### <span id = "Checkpoint">Checkpoint</span>(检查点)
+
+将当前文件保存到磁盘并擦除其更改历史记录和撤消历史记录。 您可以将此视为“干净”的保存操作。 它与保存文件、关闭文件并再次打开它的效果相同。 使用 Checkpoint 后，您将无法撤消之前的任何更改。
+
+#### <span id = "Checkpoint All">Checkpoint All</span>(检查点全部)
+
+对所有打开的文件执行检查点命令。 这会将所有打开的文件保存到磁盘并擦除它们的撤消和更改历史记录。 使用 Checkpoint All 后，您将无法撤消之前对文件所做的任何更改。
+
+#### <span id = "Clear Highlights">Clear Highlights</span>(清除亮点)
+
+删除所有源窗口中的所有单词突出显示。 突出显示是通过使用“突出显示单词”命令应用的。
+
+#### <span id = "Clip Properties">Clip Properties</span>(剪辑属性)
+
+（在剪辑窗口工具栏和右键菜单上）
+
+剪辑属性命令允许您编辑剪辑的名称。
+
+#### <span id = "Clip Window">Clip Window</span>(剪辑窗口)
+
+这显示或隐藏剪辑窗口。 剪辑窗口显示一个类似于剪贴板的文本剪辑列表，您可以插入这些文本剪辑。
+
+![image-20230207222822189](https://ryan-typora.oss-cn-chengdu.aliyuncs.com/img/202302072228261.png)
+
+剪辑是一段文本，您可能希望将其轻松插入到您的代码中。 例如，标准功能标题注释。
+
+New Clip (Ctrl+N)
+
+在剪辑窗口中创建一个新剪辑。
+
+Delete Clip (Ctrl+X)
+
+从剪辑窗口中删除选定的剪辑
+
+Edit Clip (Ctrl+E)
+
+允许您在源窗口中编辑剪辑。 当您关闭源窗口时，剪辑内容将被保存。
+
+Cut To Clip (Ctrl+Shift+X)
+
+从当前源窗口中删除当前选择并将其放入新剪辑中。
+
+Copy To Clip (Ctrl+Shift+Del)
+
+复制当前源窗口中的当前选择并将其放入新剪辑中。
+
+Paste From Clip
+
+将选定的剪辑内容粘贴到当前文件中。
+
+Clip Window Options
+
+控制剪辑窗口的设置。
+
+###### 使用剪辑
+
+要创建剪辑：
+
+1. 选择要制作成剪辑的文字。
+2. 使用编辑 > 复制到剪辑命令。 将出现剪辑窗口。
+3. 键入新剪辑的名称并按 Enter。 新剪辑将出现在剪辑窗口中。
+
+要粘贴剪辑：
+
+1. 选择要将剪辑插入文件中的位置。
+2. 使用“编辑”>“从剪辑粘贴”命令。 将出现剪辑窗口。 如果剪辑窗口已经可见，只需双击所需的剪辑即可将其插入。
+3. 键入剪辑的名称，或在剪辑窗口中双击它
+
+您可以使用剪辑窗口属性命令或单击剪辑窗口工具栏中的属性按钮来设置剪辑窗口选项。 请参阅：[剪辑窗口选项](#Clip Window Options)。
+
+#### <span id = "Clip Window Options">Clip Window Options</span>(剪辑窗口选项)
+
+此命令会打开“剪辑窗口选项”对话框，并允许您为剪辑窗口设置选项。
+
+![image-20230207223146614](https://ryan-typora.oss-cn-chengdu.aliyuncs.com/img/202302072231704.png)
+
+Preserve clips between sessions
+
+如果启用，剪辑将自动保存到 Clips 目录（在 Source Insight 程序目录中），并将在您下次运行 Source Insight 时重新加载。 如果未启用，则当 Source Insight 退出时剪辑将被丢弃。
+
+Prompt for new clip name when text is dropped
+
+如果启用，则每当您将文本放在剪辑窗口上时，Source Insight 都会提示您输入剪辑的名称。 如果未启用，Source Insight 将自动为剪辑生成一个简单的名称。
+
+Delete clip after clip is dragged out
+
+如果启用，则当您将剪辑拖出剪辑窗口时，该剪辑将从剪辑窗口中删除。 如果未启用，则剪辑将被保留。
+
+Always paste at the start of the line
+
+如果启用，则剪辑将粘贴在当前行的开头，而不是光标所在的位置。 当您将剪辑拖出窗口到特定位置时，这不适用。
+
+Process text variables when pasting from clips
+
+如果启用，则当您将剪辑粘贴到源文件中时，剪辑内容中的文本变量将被扩展和替换。 文本变量的行为与插入代码片段时的行为相同。
+
+Font, Text Color, Back Color
+
+让您选择剪辑窗口的显示选项。
+
+#### <span id = "Close">Close</span>(关闭)
+
+关闭命令关闭当前文件。 如果文件已被编辑但未保存，则 Source Insight 会在关闭文件之前询问您是否要保存更改，方法是使用带有以下按钮的对话框。
+
+Yes
+
+单击以保存并关闭文件。
+
+No
+
+单击以关闭文件而不保存它。 您所做的更改将不会保存。
+
+Cancel
+
+单击以取消关闭命令。 该文件将保持打开状态，并且不会保存。
+
+#### <span id = "Close  All">Close  All</span>(关闭所有)
+
+Close All 命令对每个打开的文件执行关闭命令。 对于您已更改但未保存的任何文件，Source Insight 将询问您是否要保存它们。
+
+如果您打开了任何捕获的自定义命令窗口并且自定义命令仍在运行，则这些窗口不会关闭。
+
+#### <span id = "Close  Project">Close  Project</span>(关闭项目)
+
+关闭项目命令关闭当前项目。 当项目关闭时，所有打开的文件也将关闭。 Source Insight 通过对每个打开的文件执行关闭命令来完成此操作。 项目的工作区和配置文件也被保存。
+
+#### <span id = "Close Window">Close Window</span>(关闭窗口)
+
+关闭窗口命令关闭当前窗口。 由于一个文件可以出现在多个窗口中，关闭一个窗口并不一定意味着您也将关闭文件缓冲区。 如果您关闭唯一显示文件的窗口，则该文件也会关闭。
+
+#### <span id = "Color Options">Color Options</span>(颜色选项)
+
+激活首选项：颜色和字体对话框，它允许您指定用户界面项目的颜色，以及面板窗口的字体和颜色选项。
+
+此对话框中的颜色项目也可以分组到视觉主题中。
+
+![image-20230207223543924](https://ryan-typora.oss-cn-chengdu.aliyuncs.com/img/202302072235019.png)
+
+Color Item list
+
+列出可以着色的用户界面项。 该列表包含以下项目：
+
+<center>表 4.2：颜色项目</center>
+
+| Display Item               | Description                                                  |
+| -------------------------- | ------------------------------------------------------------ |
+| Default Text               | 没有应用其他样式的纯文本。 如果文件类型没有语言解析器，这是文本显示的颜色。如果有语言解析器，但标识符未知，这是标识符将显示的颜色。 |
+| Window Background          | 源窗口背景的颜色。                                           |
+| Selection Bar              | 左边距区域的颜色。                                           |
+| Printed Default Text       | 纯文本的打印颜色。                                           |
+| Printed Window Background  | 打印的背景颜色。                                             |
+| Change Marks               | 在已编辑但未保存的行旁边出现在左边距中的更改标记的颜色。     |
+| Saved Change Marks         | 将更改保存到磁盘后，更改标记的颜色出现在已编辑行的左边距中。 |
+| Current Line Indicator     | 用于突出显示包含所选内容的当前行的颜色。 该颜色用作整行的背景色。 只有在选项 > 首选项：Windows 中启用了显示当前行指示符的选项时才使用此选项。 |
+| End of File                | 出现在文件末尾下方的区域的颜色。                             |
+| Application Background     | 源文件窗口后面的主应用程序框架窗口的颜色。                   |
+| Frame and Panel Text       | 主应用程序窗口框架、窗口选项卡和面板窗口标题中使用的文本颜色。 面板窗口是浮动窗口和停靠窗口。 |
+| Frame and Panel Background | 主应用程序窗口框架、窗口选项卡和面板窗口的背景颜色。         |
+
+Pick Color... 
+
+单击此按钮可为列表中的项目选择新颜色。
+
+Styles...
+
+打开“样式属性”对话框以编辑格式样式设置。 样式基于解析应用于文本。 样式中使用的颜色应该与您为列表中的项目选择的颜色一起使用。 例如，窗口背景颜色不应与您为样式选择的文本或背景颜色冲突。
+
+Themes...
+
+打开视觉主题管理器。
+
+Use Defaults...
+
+使用默认值...
+
+Set Panel Fonts and Colors...
+
+许多面板显示文本列表，并且每个面板都有这些列表中使用的字体和颜色的可选设置。
+
+单击时，这会将所有面板中的字体和颜色设置为单一设置。 尽管每个面板都有自己的字体和颜色设置，但此按钮将它们全部设置为相同的内容。 这个按钮是一次更改所有面板字体和颜色的简单方法，而不是单独为每个面板选择选项。 但是，这消除了它们设置中的任何差异。
+
+> 应用视觉主题还将所有面板颜色一起更改为主题中存储的任何颜色。
 
 #### <span id = "Command Shell">Command Shell</span>
 
